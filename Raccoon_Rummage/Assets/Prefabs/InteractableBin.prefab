@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7188088075575094601}
-  m_Layer: 0
+  - component: {fileID: 5227486905063311047}
+  - component: {fileID: 6864400416441266624}
+  - component: {fileID: 1661608680960563954}
+  m_Layer: 6
   m_Name: InteractableBin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +35,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &5227486905063311047
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188088075575094602}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6864400416441266624
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188088075575094602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &1661608680960563954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188088075575094602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60eb3c7057dde564bb393991e750a3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: Press E to Rummage
+  UIController: {fileID: 0}
+  CoinCollection: {fileID: 0}
 --- !u!1001 &7188088076090229159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,50 +221,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b5d73cf2b0da574fa417199eda9fe2e, type: 3}
   m_PrefabInstance: {fileID: 7188088076090229159}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7998482911359237366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b5d73cf2b0da574fa417199eda9fe2e, type: 3}
-  m_PrefabInstance: {fileID: 7188088076090229159}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &7188088075702725995
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7998482911359237366}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &7188088075702725994
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7998482911359237366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.022938324, y: 0.029241877, z: 0.021533715}
-  m_Center: {x: 0.00002321601, y: 0.015473866, z: -0.000045167206}
---- !u!114 &7188088075702725992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7998482911359237366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60eb3c7057dde564bb393991e750a3f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prompt: Rummage!

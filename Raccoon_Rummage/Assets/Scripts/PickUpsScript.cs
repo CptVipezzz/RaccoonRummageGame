@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickUpsScript : MonoBehaviour, IPickUp
 {
-    public static event Action OnPickUpCollected; 
+    public static event Action OnPickUpCollected;
 
     public void Collect()
     {
@@ -13,12 +13,4 @@ public class PickUpsScript : MonoBehaviour, IPickUp
         OnPickUpCollected?.Invoke();
         Destroy(this.gameObject);
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            
-        }
-    }*/
 }
