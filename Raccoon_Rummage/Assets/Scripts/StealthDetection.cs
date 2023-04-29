@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class StealthDetection : MonoBehaviour
 {
+    private int stealth = 100;
+
+    public UIController UIController;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
         
+        if (other.gameObject.tag == "LoeDetect")
+        {
+            stealth -= 1;
+        }
+    }
+
+    public void UpdateStealthText()
+    {
+        UIController.StealthUpdate(stealth);
+        GameManager.Instance.stealth = stealth;
     }
 }
