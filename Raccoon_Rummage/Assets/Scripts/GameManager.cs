@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
-    public int score { get; set; } = 0; 
+    public int score { get; set; } = 0;
+    public int stealth { get; set; } = 100;
 
     public static GameManager Instance
     {

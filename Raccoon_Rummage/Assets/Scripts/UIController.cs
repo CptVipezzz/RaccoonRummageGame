@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI stealthMeter;
 
     public int levelMax;
     public float timeLeft;
@@ -25,9 +26,9 @@ public class UIController : MonoBehaviour
         scoreText.text = "Food: " + coin.ToString() + "/ " + levelMax;        
     }
 
-    public void StealthUpdate()
+    public void StealthUpdate(int stealth)
     {
-        //Stealth UI updates go here
+        stealthMeter.text = "Concealment: " + stealth.ToString() + "%";
     }
 
     private void Update()
