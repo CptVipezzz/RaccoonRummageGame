@@ -7,6 +7,10 @@ TagManager:
   - MidScoreCoin
   - LowScoreCoin
   - HighScoreCoin
+  - LowDetect
+  - MidDetect
+  - HighDetect
+  - SingleDetect
   layers:
   - Default
   - TransparentFX
