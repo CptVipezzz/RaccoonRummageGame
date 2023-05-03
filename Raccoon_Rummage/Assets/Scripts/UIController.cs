@@ -11,6 +11,9 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI stealthMeter;
 
+    public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI finalTimerText;
+
     public GameObject pauseMenuUI;
     public GameObject winScreenUI;
     public GameObject lossScreenUI;
@@ -20,6 +23,8 @@ public class UIController : MonoBehaviour
     public bool timerOn = false;
     public static bool isPaused = false;
     public string sceneName;
+
+    private string tmpTime;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +99,9 @@ public class UIController : MonoBehaviour
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
-        timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+        tmpTime = string.Format("{0:00} : {1:00}", minutes, seconds);
+        timerText.text = tmpTime;
+        
     }
 
     public void Resume()
@@ -131,7 +138,9 @@ public class UIController : MonoBehaviour
 
     public void GameWon()
     {
-        winScreenUI.SetActive(true);
+        winScreenUI.SetActive(true);  
+        finalScoreText.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
+        finalTimerText.text = "You managed that with " + tmpTime + " left!";
         Time.timeScale = 0;
         isPaused = true;
     }
