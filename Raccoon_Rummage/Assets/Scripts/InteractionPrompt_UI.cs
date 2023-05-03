@@ -13,6 +13,7 @@ public class InteractionPrompt_UI : MonoBehaviour
     {
         //takes a reff of the camera obj and hides the prompt
         mainCam = Camera.main;
+        if (mainCam == null) { Debug.Log("mainCam is Null"); }
         uiPanel.SetActive(false);
     }
 
