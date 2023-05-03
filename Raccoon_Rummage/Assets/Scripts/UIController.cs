@@ -12,27 +12,41 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI stealthMeter;
 
     public GameObject pauseMenuUI;
+    public GameObject winScreenUI;
+    public GameObject lossScreenUI;
 
-    public int levelMax;
+    //public static int levelMax;
     public float timeLeft;
     public bool timerOn = false;
     public static bool isPaused = false;
+    public string sceneName;
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = "Food: 0/ " + levelMax;
+        pauseMenuUI.SetActive(false);
+        winScreenUI.SetActive(false);   
+        lossScreenUI.SetActive(false);  
+
+        scoreText.text = "Food: 0/ " + GameManager.Instance.levelWin;
         timerOn = true;
     }
 
     public void ScoreUpdate(int coin)
     {
-        scoreText.text = "Food: " + coin.ToString() + "/ " + levelMax;        
+        scoreText.text = "Food: " + coin.ToString() + "/ " + GameManager.Instance.levelWin;        
     }
 
     public void StealthUpdate(int stealth)
     {
-        stealthMeter.text = "Concealment: " + stealth.ToString() + "%";
+        if (stealth >= 0)
+        {
+            stealthMeter.text = "Concealment: " + stealth.ToString() + "%";
+        }
+        else if (stealth < 0)
+        {
+            stealthMeter.text = "Concealment: 0%";
+        }
     }
 
     private void Update()
@@ -49,6 +63,7 @@ public class UIController : MonoBehaviour
                 Debug.Log("Time is up");
                 timeLeft = 0;
                 timerOn = false;
+                GameLoss();
             }
         }
 
@@ -63,6 +78,13 @@ public class UIController : MonoBehaviour
                 Pause();
             }
         }
+
+        if (GameManager.Instance.stealth <= 0)
+        {
+            Debug.Log("Player Detected");
+            GameLoss();
+        }
+
     }
 
     void UpdateTimer(float currentTime)
@@ -101,4 +123,23 @@ public class UIController : MonoBehaviour
         Application.Quit();
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(sceneName);
+        Debug.Log("Reloading level...");
+    }
+
+    public void GameWon()
+    {
+        winScreenUI.SetActive(true);
+        Time.timeScale = 0;
+        isPaused = true;
+    }
+
+    public void GameLoss()
+    {
+        lossScreenUI.SetActive(true);
+        Time.timeScale = 0;
+        isPaused = true;
+    }
 }

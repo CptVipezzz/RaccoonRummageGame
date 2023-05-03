@@ -9,11 +9,43 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
     public UIController UIController;
     public CoinCollection CoinCollection;
 
+    private bool canInteract;
+
+    public void Start()
+    {
+        canInteract = true;
+    }
     public bool Interact(Interactor interactor)
     {
-        //does the interaction
-        CoinCollection.BinInteract();
-        Debug.Log("Bin interated with!");
+        while (canInteract == true)
+        {
+            //does the interaction
+            CoinCollection.BinInteract();
+            canInteract= false;
+            Debug.Log("Bin interated with!");
+        }
+
+        PromptTextUpdate();
         return true;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        PromptTextUpdate();         
+    }
+
+    private void PromptTextUpdate()
+    {
+        if (canInteract == true)
+        {
+
+            prompt = "Press E to Rummage!";
+        }
+        else
+        {
+            prompt = "Already Rummaged this bin!";
+        }
+
     }
 }

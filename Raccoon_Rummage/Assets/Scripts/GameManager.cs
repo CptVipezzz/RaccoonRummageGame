@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public int score { get; set; } = 0;
     public int stealth { get; set; } = 100;
 
+    public int levelWin{ get; set; }
+
+    public int levelWinScore;
+
     public static GameManager Instance
     {
         get
@@ -20,8 +24,10 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    {       
         instance = this;
         score = 0;
+        levelWin = levelWinScore;
+        Time.timeScale = 1;
     }
 }
