@@ -9,11 +9,14 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
     public UIController UIController;
     public CoinCollection CoinCollection;
 
+    public GameObject interactableLight;
+
     private bool canInteract;
 
     public void Start()
     {
         canInteract = true;
+        interactableLight.SetActive(true);
     }
     public bool Interact(Interactor interactor)
     {
@@ -22,6 +25,7 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
             //does the interaction
             CoinCollection.BinInteract();
             canInteract= false;
+            interactableLight.SetActive(false);
             Debug.Log("Bin interated with!");
         }
 
