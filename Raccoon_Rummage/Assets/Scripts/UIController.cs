@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
     public float timeLeft;
     public bool timerOn = false;
     public static bool isPaused = false;
-    public string sceneName;
+    private string currentSceneName;
 
     private string tmpTime;
 
@@ -31,7 +31,9 @@ public class UIController : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         winScreenUI.SetActive(false);   
-        lossScreenUI.SetActive(false);  
+        lossScreenUI.SetActive(false);
+
+        currentSceneName = SceneManager.GetActiveScene().name;
 
         scoreText.text = "Food: 0/ " + GameManager.Instance.levelWin;
         timerOn = true;
@@ -132,7 +134,7 @@ public class UIController : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(currentSceneName);
         Debug.Log("Reloading level...");
     }
 
