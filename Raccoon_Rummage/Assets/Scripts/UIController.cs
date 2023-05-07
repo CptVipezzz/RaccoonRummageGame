@@ -140,11 +140,12 @@ public class UIController : MonoBehaviour
 
     public void GameWon()
     {
+        Time.timeScale = 0;
+        isPaused = true;
         winScreenUI.SetActive(true);  
         finalScoreText.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
         finalTimerText.text = "You managed that with " + tmpTime + " left!";
-        Time.timeScale = 0;
-        isPaused = true;
+      
     }
 
     public void GameLoss()
