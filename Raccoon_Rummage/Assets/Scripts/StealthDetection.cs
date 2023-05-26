@@ -30,7 +30,7 @@ public class StealthDetection : MonoBehaviour
         }
         else if (other.gameObject.tag == "SingleDetect")
         {
-            stealth -= 5;
+            stealth -= 15;
             //Debug.Log(this.gameObject.name + "Detected by " + other.gameObject.name);
             UpdateStealthText();
         }
@@ -57,15 +57,15 @@ public class StealthDetection : MonoBehaviour
         {
             if (otherObject.tag == "LowDetect")
             {
-                stealth -= 1;
+                stealth -= 8;
             }
             else if (otherObject.tag == "MidDetect")
             {
-                stealth -= 3;
+                stealth -= 15;
             }
             else if (otherObject.tag == "HighDetect")
             {
-                stealth -= 5;
+                stealth -= 20;
             }
 
             lastTick = Time.time;
