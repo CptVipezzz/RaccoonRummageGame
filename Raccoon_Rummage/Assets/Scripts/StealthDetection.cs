@@ -74,4 +74,9 @@ public class StealthDetection : MonoBehaviour
         UpdateStealthText();
         //Debug.Log("Stealth updateted" + otherObject.tag + " - " + stealth);
     }
+
+    public void BinRummage()
+    {
+        stealth -= 10;
+    }
 }

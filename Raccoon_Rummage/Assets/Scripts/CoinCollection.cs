@@ -7,7 +7,7 @@ public class CoinCollection : MonoBehaviour
    private int coin = 0;
 
     public UIController UIController;
-    public int levelMax;
+    public StealthDetection stealthDetection;
 
     private void Start()
     {
@@ -38,6 +38,7 @@ public class CoinCollection : MonoBehaviour
     public void BinInteract()
     {
         coin += 5;
+        stealthDetection.BinRummage();
         UpdateScoreText();
     }
 

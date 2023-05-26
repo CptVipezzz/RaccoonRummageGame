@@ -32,6 +32,7 @@ public class UIController : MonoBehaviour
         pauseMenuUI.SetActive(false);
         winScreenUI.SetActive(false);   
         lossScreenUI.SetActive(false);
+        Cursor.visible = false;
 
         currentSceneName = SceneManager.GetActiveScene().name;
 
@@ -111,6 +112,7 @@ public class UIController : MonoBehaviour
        pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        Cursor.visible = false;
     }
 
     void Pause()
@@ -118,6 +120,7 @@ public class UIController : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
+        Cursor.visible = true;
     }
 
     public void LoadMenu()
@@ -145,7 +148,8 @@ public class UIController : MonoBehaviour
         winScreenUI.SetActive(true);  
         finalScoreText.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
         finalTimerText.text = "You managed that with " + tmpTime + " left!";
-      
+        Cursor.visible = true;
+
     }
 
     public void GameLoss()
@@ -153,5 +157,6 @@ public class UIController : MonoBehaviour
         lossScreenUI.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
+        Cursor.visible = true;
     }
 }
