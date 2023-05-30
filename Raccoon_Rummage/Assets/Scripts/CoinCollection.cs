@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class CoinCollection : MonoBehaviour
 {
-   private int coin = 0;
+    public int coin = 0;
 
     public UIController UIController;
     public StealthDetection stealthDetection;
 
-    private void Start()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "LowScoreCoin")
@@ -43,6 +39,7 @@ public class CoinCollection : MonoBehaviour
     public void BinInteract()
     {
         coin += 5;
+        UIController.pickUpValue = 5;
         stealthDetection.BinRummage();
         UpdateScoreText();
     }

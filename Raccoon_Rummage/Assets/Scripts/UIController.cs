@@ -212,7 +212,7 @@ public class UIController : MonoBehaviour
         Debug.Log("popup");
         pickUpPopUp.SetActive(true);
         popUpText.text = "+" + pickUpValue;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         pickUpPopUp.SetActive(false);
     }

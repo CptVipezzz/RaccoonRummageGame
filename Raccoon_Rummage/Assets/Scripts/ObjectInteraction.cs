@@ -24,6 +24,7 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
         {
             //does the interaction
             CoinCollection.BinInteract();
+            PopUp();
             canInteract= false;
             interactableLight.SetActive(false);
             Debug.Log("Bin interated with!");
@@ -51,5 +52,14 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
             prompt = "Already Rummaged this bin!";
         }
 
+    }
+
+    public void PopUp()
+    {
+        if (CoinCollection.coin == GameManager.Instance.levelWinScore)
+        {
+            UIController.StartPopUps(2);
+        }
+        else { UIController.StartPopUps(1); }
     }
 }
