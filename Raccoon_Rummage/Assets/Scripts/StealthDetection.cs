@@ -53,7 +53,7 @@ public class StealthDetection : MonoBehaviour
 
     private void FixedUpdate()
     {
-        while(isDetected == true && Time.time > stealthDrain + lastTick)
+        while (isDetected == true && Time.time > stealthDrain + lastTick)
         {
             if (otherObject.tag == "LowDetect")
             {
@@ -69,7 +69,18 @@ public class StealthDetection : MonoBehaviour
             }
 
             lastTick = Time.time;
+           
         }
+
+        if (isDetected == true)
+        {
+            UIController.isHidden = false;
+        }
+        else if (isDetected == false)
+        {
+            UIController.isHidden = true;
+        }
+    
 
         UpdateStealthText();
         //Debug.Log("Stealth updateted" + otherObject.tag + " - " + stealth);

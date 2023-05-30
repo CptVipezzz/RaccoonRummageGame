@@ -17,12 +17,19 @@ public class UIController : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject winScreenUI;
     public GameObject lossScreenUI;
+    public GameObject clockFace;
+    public GameObject detected;
+    public GameObject hidden;
+
+    public Slider slider;
 
     //public static int levelMax;
-    public float timeLeft;
+    private float timeLeft;
+    public float maxTime;
     public bool timerOn = false;
     public static bool isPaused = false;
     private string currentSceneName;
+    public bool isHidden = true;
 
     private string tmpTime;
 
@@ -33,10 +40,12 @@ public class UIController : MonoBehaviour
         winScreenUI.SetActive(false);   
         lossScreenUI.SetActive(false);
         Cursor.visible = false;
+        SetMaxStealth(GameManager.Instance.stealth);
 
         currentSceneName = SceneManager.GetActiveScene().name;
 
         scoreText.text = "Food: 0/ " + GameManager.Instance.levelWin;
+        timeLeft = maxTime;
         timerOn = true;
     }
 
@@ -47,14 +56,16 @@ public class UIController : MonoBehaviour
 
     public void StealthUpdate(int stealth)
     {
-        if (stealth >= 0)
+        /*if (stealth >= 0)
         {
             stealthMeter.text = "Concealment: " + stealth.ToString() + "%";
         }
         else if (stealth < 0)
         {
             stealthMeter.text = "Concealment: 0%";
-        }
+        }*/
+
+        SetStealth(stealth);
     }
 
     private void Update()
@@ -65,6 +76,7 @@ public class UIController : MonoBehaviour
             {
                 timeLeft -= Time.deltaTime;
                 UpdateTimer(timeLeft);
+                SetClockRot(timeLeft);
             }
             else
             {
@@ -93,6 +105,16 @@ public class UIController : MonoBehaviour
             GameLoss();
         }
 
+        if (isHidden == false)
+        {
+            detected.SetActive(true);
+            hidden.SetActive(false);
+        }
+        else
+        {
+            detected.SetActive(false);
+            hidden.SetActive(true);
+        }
     }
 
     void UpdateTimer(float currentTime)
@@ -158,5 +180,24 @@ public class UIController : MonoBehaviour
         Time.timeScale = 0;
         isPaused = true;
         Cursor.visible = true;
+    }
+
+    public void SetStealth(int stealth)
+    {
+        slider.value = stealth;
+    }
+
+    public void SetMaxStealth(int stealthMax)
+    {
+        slider.maxValue = stealthMax;
+        slider.value = stealthMax;
+    }
+
+    public void SetClockRot(float timeLeft)
+    {
+        float percentPassed;
+
+        percentPassed = timeLeft / maxTime * 100;
+        clockFace.transform.rotation = Quaternion.Euler(0, 0, 1.8f * percentPassed);   
     }
 }
