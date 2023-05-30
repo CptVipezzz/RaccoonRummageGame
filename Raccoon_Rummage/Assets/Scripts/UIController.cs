@@ -14,12 +14,17 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI finalTimerText;
 
+    public TextMeshProUGUI popUpText;
+
     public GameObject pauseMenuUI;
     public GameObject winScreenUI;
     public GameObject lossScreenUI;
     public GameObject clockFace;
     public GameObject detected;
     public GameObject hidden;
+
+    public GameObject pickUpPopUp;
+    public GameObject minimumFoodPopUp;
 
     public Slider slider;
 
@@ -30,6 +35,7 @@ public class UIController : MonoBehaviour
     public static bool isPaused = false;
     private string currentSceneName;
     public bool isHidden = true;
+    public int pickUpValue;
 
     private string tmpTime;
 
@@ -199,5 +205,35 @@ public class UIController : MonoBehaviour
 
         percentPassed = timeLeft / maxTime * 100;
         clockFace.transform.rotation = Quaternion.Euler(0, 0, 1.8f * percentPassed);   
+    }
+
+    public IEnumerator PickUpPopUp()
+    {
+        Debug.Log("popup");
+        pickUpPopUp.SetActive(true);
+        popUpText.text = "+" + pickUpValue;
+        yield return new WaitForSeconds(3f);
+
+        pickUpPopUp.SetActive(false);
+    }
+
+    IEnumerator CanLeavePopUp()
+    {
+        minimumFoodPopUp.SetActive(true);       
+        yield return new WaitForSeconds(5f);
+
+        minimumFoodPopUp.SetActive(false);
+    }
+
+    public void StartPopUps(int routine)
+    {
+        if (routine == 1)
+        {
+            StartCoroutine(PickUpPopUp());
+        }
+        else if (routine == 2)
+        {
+            StartCoroutine(CanLeavePopUp());
+        }
     }
 }
