@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
     public GameObject clockFace;
     public GameObject detected;
     public GameObject hidden;
-
+    public GameObject gameUI;
     public GameObject pickUpPopUp;
     public GameObject minimumFoodPopUp;
 
@@ -138,6 +138,7 @@ public class UIController : MonoBehaviour
     public void Resume()
     {
        pauseMenuUI.SetActive(false);
+        gameUI.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
         Cursor.visible = false;
@@ -146,6 +147,7 @@ public class UIController : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
+        gameUI.SetActive(false);
         Time.timeScale = 0;
         isPaused = true;
         Cursor.visible = true;
@@ -173,7 +175,8 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 0;
         isPaused = true;
-        winScreenUI.SetActive(true);  
+        winScreenUI.SetActive(true); 
+        gameUI.SetActive(false);
         finalScoreText.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
         finalTimerText.text = "You managed that with " + tmpTime + " left!";
         Cursor.visible = true;
@@ -183,6 +186,7 @@ public class UIController : MonoBehaviour
     public void GameLoss()
     {
         lossScreenUI.SetActive(true);
+        gameUI.SetActive(false);
         Time.timeScale = 0;
         isPaused = true;
         Cursor.visible = true;
