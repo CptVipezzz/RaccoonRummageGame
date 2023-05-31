@@ -54,9 +54,9 @@ public class CoinCollection : MonoBehaviour
     {
         if ( coin == GameManager.Instance.levelWinScore)
         {
-            UIController.StartPopUps(2);
+            UIController.StartPopUps(coin);
         }
-        else { UIController.StartPopUps(1); }
+        else { UIController.StartPopUps(coin); }
     }
 
 }

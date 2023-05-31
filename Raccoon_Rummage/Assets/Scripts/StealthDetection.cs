@@ -11,7 +11,7 @@ public class StealthDetection : MonoBehaviour
     private float lastTick = 0f;
 
     public UIController UIController;
-    private int stealthDrain = 1;
+    private float stealthDrain = 0.5f;
 
     // Start is called before the first frame update
     void Start()

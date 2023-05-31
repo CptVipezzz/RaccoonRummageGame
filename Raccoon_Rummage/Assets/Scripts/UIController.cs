@@ -36,6 +36,7 @@ public class UIController : MonoBehaviour
     private string currentSceneName;
     public bool isHidden = true;
     public int pickUpValue;
+    private bool popCheck = true;
 
     private string tmpTime;
 
@@ -53,6 +54,7 @@ public class UIController : MonoBehaviour
         scoreText.text = "Food: 0/ " + GameManager.Instance.levelWin;
         timeLeft = maxTime;
         timerOn = true;
+        popCheck = true;
     }
 
     public void ScoreUpdate(int coin)
@@ -229,15 +231,14 @@ public class UIController : MonoBehaviour
         minimumFoodPopUp.SetActive(false);
     }
 
-    public void StartPopUps(int routine)
+    public void StartPopUps(int coin)
     {
-        if (routine == 1)
-        {
-            StartCoroutine(PickUpPopUp());
-        }
-        else if (routine == 2)
+        if (coin >= GameManager.Instance.levelWinScore && popCheck == true)
         {
             StartCoroutine(CanLeavePopUp());
+            popCheck = false;
         }
+
+        StartCoroutine(PickUpPopUp());
     }
 }

@@ -58,8 +58,8 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
     {
         if (CoinCollection.coin == GameManager.Instance.levelWinScore)
         {
-            UIController.StartPopUps(2);
+            UIController.StartPopUps(CoinCollection.coin);
         }
-        else { UIController.StartPopUps(1); }
+        else { UIController.StartPopUps(CoinCollection.coin); }
     }
 }
