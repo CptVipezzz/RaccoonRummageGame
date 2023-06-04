@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1380580305140986185}
   - component: {fileID: 1380580305140986184}
   - component: {fileID: 1380580305140986191}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MidScorePickUp
   m_TagString: MidScoreCoin
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1380580305406650733}
   - component: {fileID: 1380580305406650722}
   - component: {fileID: 1380580305406650723}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,9 +159,9 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 129
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

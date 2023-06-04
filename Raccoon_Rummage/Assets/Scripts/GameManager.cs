@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {       
+        //sets vars to there default values
         instance = this;
         score = 0;
         levelWin = levelWinScore;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5999351664642194875}
   - component: {fileID: 5999351664642194877}
   - component: {fileID: 5999351664642194876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,9 +82,9 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 129
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 5999351665713589784}
   - component: {fileID: 5999351665713589799}
   - component: {fileID: 5999351665713589785}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowScorePickUp_
   m_TagString: LowScoreCoin
   m_Icon: {fileID: 0}

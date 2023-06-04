@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour
     public GameObject clockFace;
     public GameObject detected;
     public GameObject hidden;
+    public GameObject alarm;
     public GameObject gameUI;
     public GameObject pickUpPopUp;
     public GameObject minimumFoodPopUp;
@@ -116,11 +117,13 @@ public class UIController : MonoBehaviour
         if (isHidden == false)
         {
             detected.SetActive(true);
+            alarm.SetActive(true);
             hidden.SetActive(false);
         }
         else
         {
             detected.SetActive(false);
+            alarm.SetActive(false);
             hidden.SetActive(true);
         }
     }
@@ -213,7 +216,7 @@ public class UIController : MonoBehaviour
         clockFace.transform.rotation = Quaternion.Euler(0, 0, 1.8f * percentPassed);   
     }
 
-    public IEnumerator PickUpPopUp()
+    IEnumerator PickUpPopUp()
     {
         Debug.Log("popup");
         pickUpPopUp.SetActive(true);
