@@ -5,19 +5,22 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Threading;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ThirdPersonControl : MonoBehaviour
 {
+    [SerializeField] private LayerMask groundMask;
 
     public CharacterController controller;
-    public Transform cam;
-
     public float speed = 6f;
-    public float turnSmooth = 0.1f;
 
-    float turnSmoothVelocity;
+    Camera playerCamera;
 
+    private void Start()
+    {
+        playerCamera = Camera.main;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -29,15 +32,44 @@ public class ThirdPersonControl : MonoBehaviour
         //Checks for an input 
         if (direction.magnitude >= 1f)
         {
-
-            //Gets the current angle and then rotates the gameobject to the new angle based on the inputs
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; 
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmooth);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            //Moves the gameobject forward
+            //Moves the gameobject in the direction input by the player using WASD & Arrow keys
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y; 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-        }        
+        }
+
+        Aim();
+        
+    }
+
+    private (bool hit, Vector3 position) GetMousePosition()
+    {
+        var ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+        {
+            //the raay hit something return its position
+            return (hit: true, position:hitInfo.point);
+        }
+        else
+        {
+            //the ray did not hit anything
+            return(hit: false, position: Vector3.zero);
+        }
+    }
+
+    private void Aim()
+    {
+        var (hit, position) = GetMousePosition();
+        if (hit)
+        {
+            //calc direction
+            var direction = position - transform.position;
+            //ignore height 
+            direction.y = 0f;
+
+            //transform look in direction
+            transform.forward = direction;
+        }
     }
 }
