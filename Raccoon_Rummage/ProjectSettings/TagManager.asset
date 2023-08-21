@@ -12,6 +12,7 @@ TagManager:
   - HighDetect
   - SingleDetect
   - LevelExit
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - Interactable
   - PickUps
-  - 
+  - Ground
   - 
   - 
   - 
