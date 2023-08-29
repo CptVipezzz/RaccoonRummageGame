@@ -192,6 +192,7 @@ public class UIController : MonoBehaviour
     {
         lossScreenUI.SetActive(true);
         gameUI.SetActive(false);
+        isHidden = true;
         Time.timeScale = 0;
         isPaused = true;
         Cursor.visible = true;
