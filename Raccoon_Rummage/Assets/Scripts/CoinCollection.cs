@@ -7,7 +7,7 @@ public class CoinCollection : MonoBehaviour
     public int coin = 0;
 
     public UIController UIController;
-    public StealthDetection stealthDetection;
+    private StealthDetection stealthDetection;
 
     private void OnTriggerEnter(Collider other)
     {

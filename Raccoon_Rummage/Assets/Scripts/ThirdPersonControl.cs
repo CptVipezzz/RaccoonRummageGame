@@ -54,9 +54,15 @@ public class ThirdPersonControl : MonoBehaviour
             //Moves the gameobject forward
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            ApplyGravity();
-            ApplyMovement();
+           
+        } 
+        else
+        {
+            moveDir = Vector3.zero; 
         }
+        
+        ApplyGravity();
+        ApplyMovement();
     }
 
     private void ApplyMovement()
