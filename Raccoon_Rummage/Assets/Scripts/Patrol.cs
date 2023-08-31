@@ -13,7 +13,7 @@ public class Patrol : MonoBehaviour
     private int nextSpot;
     private float waitTime;
     private Vector3 nextSpotTrans;
-    private bool canRot = true;
+   //private bool canRot = true;
 
     private void Start()
     {
