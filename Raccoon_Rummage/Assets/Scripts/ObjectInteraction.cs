@@ -25,7 +25,7 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
             //does the interaction
             CoinCollection.BinInteract();
             PopUp();
-            canInteract= false;
+            canInteract = false;
             interactableLight.SetActive(false);
             Debug.Log("Bin interated with!");
         }
