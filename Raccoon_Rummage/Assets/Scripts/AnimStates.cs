@@ -6,7 +6,7 @@ public class AnimStates : MonoBehaviour
 {
    Animator anim;
 
-    LadderController ladderController;
+    public LadderController ladderController;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class AnimStates : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-
+        //raccoon
         if (ladderController.onLadder == true)
         {
             
@@ -39,16 +39,18 @@ public class AnimStates : MonoBehaviour
                 anim.SetBool("onLadder", true);
             }
         }
-        else
+        else if (ladderController.onLadder == false)
         {
             if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
-        {
+            {
             anim.SetBool("isMoving", true);
-        } else
-        {
+            } 
+            else
+            {
             anim.SetBool("isMoving", false);
-        }
+            }
 
         }
+
     }
 }

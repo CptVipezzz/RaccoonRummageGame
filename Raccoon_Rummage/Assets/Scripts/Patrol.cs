@@ -7,6 +7,7 @@ public class Patrol : MonoBehaviour
     public float moveSpeed;
     public float startWaitTime;
     public float rotSpeed;
+    public bool isMoving;
 
     public Transform[] patrolSpots;
 
@@ -20,6 +21,7 @@ public class Patrol : MonoBehaviour
         //int values
         waitTime = startWaitTime;
         nextSpot = 0;
+        isMoving = false;
     }
 
     private void Update()
@@ -27,8 +29,10 @@ public class Patrol : MonoBehaviour
         nextSpotTrans = patrolSpots[nextSpot].position;
         
         //checks to see if the "enemy" has reached the point, within a reasonable distance
-        if (Vector3.Distance(transform.position, patrolSpots[nextSpot].position) < 0.2f)
+        if (Vector3.Distance(transform.position, patrolSpots[nextSpot].position) < 0.12f)
         {
+            isMoving = true;
+
             //waits for a time then moves to the next patrol point
             if (waitTime <= 0)
             {
@@ -38,7 +42,7 @@ public class Patrol : MonoBehaviour
                 
                 waitTime = startWaitTime;
             }
-            else { waitTime -= Time.deltaTime; }
+            else { waitTime -= Time.deltaTime; isMoving = false; }
         }
         else
         {
