@@ -3,7 +3,12 @@ guid: f41cb61c32644d641ab059a0fca6a623
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cardboard_Square_Cardboardbox_Square_initialShadingGroup1
+    second: {fileID: 2100000, guid: 428ab146d5977a347a49deea8240bac4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

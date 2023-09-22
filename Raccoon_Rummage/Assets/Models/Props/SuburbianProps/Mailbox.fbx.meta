@@ -3,7 +3,12 @@ guid: 99abc37d9c322fb4dad13edd7e23955c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mailbox_initialShadingGroup1
+    second: {fileID: 2100000, guid: a12b8cf050eb3174bbdf24d42db007d9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

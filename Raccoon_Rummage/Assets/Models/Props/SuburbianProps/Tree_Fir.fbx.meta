@@ -3,9 +3,14 @@ guid: 620f4fecf8c49464791463245cdea225
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree_Fir_initialShadingGroup1
+    second: {fileID: 3215922324965946203, guid: fda45dd6a7e53f84a9317900aad5b707, type: 3}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
