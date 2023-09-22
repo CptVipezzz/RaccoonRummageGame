@@ -9,11 +9,14 @@ public class LadderController : MonoBehaviour
     public float ladderSpeed = 3.2f;
     public ThirdPersonControl thirdPersonInput;
 
+    public bool onLadder = false;
+
     // Start is called before the first frame update
     void Start()
     {
         thirdPersonInput = GetComponent<ThirdPersonControl>();
         inside = false;
+        onLadder = false;
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class LadderController : MonoBehaviour
         if (other.gameObject.tag == "Ladder")
         {
             thirdPersonInput.enabled = false;
+            onLadder = true;    
             inside = !inside;
         }
     }
@@ -44,6 +48,7 @@ public class LadderController : MonoBehaviour
         if (other.gameObject.tag == "Ladder")
         {
             thirdPersonInput.enabled = true;
+            onLadder = false;
             inside = !inside;
         }
     }
