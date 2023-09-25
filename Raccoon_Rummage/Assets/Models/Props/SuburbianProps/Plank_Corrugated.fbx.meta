@@ -3,7 +3,12 @@ guid: adb103cd2a8c8184ba9bb7796d9a1e96
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plank_Corrugated1_Plank_Corrugated_initialShadingGroup1
+    second: {fileID: 2100000, guid: afeeb5eb2c1bb454da38fee9afbdcea4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
