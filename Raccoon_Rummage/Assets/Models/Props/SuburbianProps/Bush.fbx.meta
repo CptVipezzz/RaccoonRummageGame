@@ -8,14 +8,19 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bush_Bush_initialShadingGroup1
-    second: {fileID: 2100000, guid: 980b9d69dca7c40449f0080bce8bb7e8, type: 2}
+    second: {fileID: 2100000, guid: f4ea760711fe2d944bac4f1dc96cb75e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bush_Bush_lambert2SG1
-    second: {fileID: 2100000, guid: b5a722fe81798dd4e8c501f5bae0f440, type: 2}
+    second: {fileID: 2100000, guid: f4ea760711fe2d944bac4f1dc96cb75e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bush_Bush_lambert3SG1
+    second: {fileID: 2100000, guid: f4ea760711fe2d944bac4f1dc96cb75e, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 0
     materialLocation: 1
