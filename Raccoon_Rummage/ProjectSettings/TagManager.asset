@@ -12,7 +12,8 @@ TagManager:
   - HighDetect
   - SingleDetect
   - LevelExit
-  - Ladder
+  - LadderTop
+  - LadderBottom
   layers:
   - Default
   - TransparentFX
