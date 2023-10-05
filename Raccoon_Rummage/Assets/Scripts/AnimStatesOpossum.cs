@@ -25,6 +25,23 @@ public class AnimStatesOpossum : MonoBehaviour
         {
             anim.SetBool("isMoving", false);
         }
-        
+
+        if (patrol.TurnRight == true)
+        {
+            anim.SetBool("TurnRight", true);
+        }
+        else
+        {
+            anim.SetBool("TurnRight", false);
+        }
+
+        if (patrol.TurnLeft == true)
+        {
+            anim.SetBool("TurnLeft", true);
+        }
+        else
+        {
+            anim.SetBool("TurnLeft", false);
+        }
     }
 }

@@ -8,6 +8,9 @@ public class Patrol : MonoBehaviour
     public float startWaitTime;
     public float rotSpeed;
     public bool isMoving;
+   //Added for declaring turn directions on collision with patrol point
+    public bool TurnRight;
+    public bool TurnLeft;
 
     public Transform[] patrolSpots;
 
@@ -21,7 +24,10 @@ public class Patrol : MonoBehaviour
         //int values
         waitTime = startWaitTime;
         nextSpot = 0;
-        isMoving = false;
+        isMoving = true;
+       //Set to true when colliding with patrol points
+        TurnRight= false;
+        TurnLeft = false;
     }
 
     private void Update()
