@@ -12,7 +12,7 @@ public class Patrol : MonoBehaviour
     public bool TurnRight;
     public bool TurnLeft;
 
-    public Transform[] patrolSpots;
+    public GameObject[] patrolSpots;
 
     private int nextSpot;
     private float waitTime;
@@ -32,10 +32,12 @@ public class Patrol : MonoBehaviour
 
     private void Update()
     {
-        nextSpotTrans = patrolSpots[nextSpot].position;
+        nextSpotTrans = patrolSpots[nextSpot].transform.position;
+        FindDirection();
+
         
         //checks to see if the "enemy" has reached the point, within a reasonable distance
-        if (Vector3.Distance(transform.position, patrolSpots[nextSpot].position) < 0.12f)
+        if (Vector3.Distance(transform.position, patrolSpots[nextSpot].transform.position) < 0.12f)
         {
             isMoving = true;
 
@@ -52,7 +54,7 @@ public class Patrol : MonoBehaviour
         }
         else
         {
-        LookAtTarget(patrolSpots[nextSpot]);
+        LookAtTarget(patrolSpots[nextSpot].transform);
 
         //moves the "enemy" towards a point set by the patrolSpots array
         transform.position = Vector3.MoveTowards(transform.position, nextSpotTrans, moveSpeed * Time.deltaTime);
@@ -65,5 +67,26 @@ public class Patrol : MonoBehaviour
         Vector3 direction = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
+    }
+
+    private void FindDirection()
+    {
+        PatrolPointDir patrolPointDir = patrolSpots[nextSpot].GetComponent<PatrolPointDir>();
+
+        if (patrolPointDir.leftTurn == true && patrolPointDir.rightTurn == false)
+        {
+            TurnLeft = true;
+            TurnRight = false;
+        }
+        else if (patrolPointDir.leftTurn == false && patrolPointDir.rightTurn == true)
+        {
+            TurnRight = true;
+            TurnLeft = false;
+        }
+        else
+        {
+            TurnLeft = false;
+            TurnRight = false;
+        }
     }
 }

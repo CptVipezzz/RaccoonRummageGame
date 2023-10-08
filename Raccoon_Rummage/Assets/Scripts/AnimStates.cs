@@ -16,7 +16,9 @@ public class AnimStates : MonoBehaviour
     void Update()
     {
         //raccoon 
-            if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
+            if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d") 
+                || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) 
+                || Input.GetKey(KeyCode.LeftArrow))
             {
             anim.SetBool("isMoving", true);
             } 

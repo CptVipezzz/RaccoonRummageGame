@@ -57,7 +57,7 @@ public class CoinCollection : MonoBehaviour
     public void PopUp()
     {
         //decides which pop-up to display based ont he current score
-        if ( coin == GameManager.Instance.levelWinScore)
+        if ( coin == GameManager.Instance.levelWin)
         {
             UIController.StartPopUps(coin);
         }

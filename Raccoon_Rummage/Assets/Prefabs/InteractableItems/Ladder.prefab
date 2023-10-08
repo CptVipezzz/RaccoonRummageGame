@@ -59,9 +59,9 @@ GameObject:
   - component: {fileID: 1870581078262785695}
   - component: {fileID: 1310158519789163553}
   - component: {fileID: 4183578682058130163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LadderTop
-  m_TagString: Untagged
+  m_TagString: LadderTop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,9 +121,9 @@ GameObject:
   - component: {fileID: 8789749422549033187}
   - component: {fileID: 1344740046911786217}
   - component: {fileID: 1215340970634750534}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LadderBottom
-  m_TagString: Untagged
+  m_TagString: LadderBottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

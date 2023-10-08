@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
 
     public int levelWin{ get; set; }
 
-    public int levelWinScore;
+    public int levelTimeMax { get; set; }
+
+    //public int levelWinScore;
+
+    public LevelData levelData;
 
     public static GameManager Instance
     {
@@ -28,7 +32,20 @@ public class GameManager : MonoBehaviour
         //sets vars to there default values
         instance = this;
         score = 0;
-        levelWin = levelWinScore;
-        Time.timeScale = 1;
+        stealth = 100;
+        levelTimeMax = levelData.levelTime;
+        levelWin = levelData.levelScore;
+        Time.timeScale = 1;        
+    }
+
+    public void ResetValues()
+    {
+        //sets vars to there default values
+        instance = this;
+        score = 0;
+        stealth = 100;
+        levelWin = levelData.levelScore;
+        levelTimeMax = levelData.levelTime;
+        Time.timeScale = 1;        
     }
 }

@@ -9,15 +9,20 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
     public UIController UIController;
     public CoinCollection CoinCollection;
 
-    public GameObject interactableLight;
+    public GameObject binBag;
+    public GameObject trashPile;
+    public GameObject interactionCol;
 
     private bool canInteract;
 
     public void Start()
     {
         canInteract = true;
-        interactableLight.SetActive(true);
+        binBag.SetActive(true);
+        trashPile.SetActive(false);
+        interactionCol.SetActive(true);
     }
+    
     public bool Interact(Interactor interactor)
     {
         while (canInteract == true)
@@ -26,7 +31,9 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
             CoinCollection.BinInteract();
             PopUp();
             canInteract = false;
-            interactableLight.SetActive(false);
+            binBag.SetActive(false);
+            trashPile?.SetActive(true);
+            interactionCol?.SetActive(false);
             Debug.Log("Bin interated with!");
         }
 
@@ -56,7 +63,7 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
 
     public void PopUp()
     {
-        if (CoinCollection.coin == GameManager.Instance.levelWinScore)
+        if (CoinCollection.coin == GameManager.Instance.levelWin)
         {
             UIController.StartPopUps(CoinCollection.coin);
         }

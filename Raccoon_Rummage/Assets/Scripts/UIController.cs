@@ -31,7 +31,7 @@ public class UIController : MonoBehaviour
 
     //public static int levelMax;
     private float timeLeft;
-    public float maxTime;
+    private float maxTime;
     public bool timerOn = false;
     public static bool isPaused = false;
     private string currentSceneName;
@@ -49,10 +49,13 @@ public class UIController : MonoBehaviour
         lossScreenUI.SetActive(false);
         Cursor.visible = false;
         SetMaxStealth(GameManager.Instance.stealth);
+        //slider.maxValue = GameManager.Instance.stealth;    
+        //slider.value = GameManager.Instance.stealth;
 
         currentSceneName = SceneManager.GetActiveScene().name;
 
         scoreText.text = "Food: 0/ " + GameManager.Instance.levelWin;
+        maxTime = GameManager.Instance.levelTimeMax; 
         timeLeft = maxTime;
         timerOn = true;
         popCheck = true;
@@ -65,15 +68,6 @@ public class UIController : MonoBehaviour
 
     public void StealthUpdate(int stealth)
     {
-        /*if (stealth >= 0)
-        {
-            stealthMeter.text = "Concealment: " + stealth.ToString() + "%";
-        }
-        else if (stealth < 0)
-        {
-            stealthMeter.text = "Concealment: 0%";
-        }*/
-
         SetStealth(stealth);
     }
 
@@ -172,6 +166,7 @@ public class UIController : MonoBehaviour
 
     public void Restart()
     {
+        GameManager.Instance.ResetValues();
         SceneManager.LoadScene(currentSceneName);
         Debug.Log("Reloading level...");
     }
@@ -191,6 +186,8 @@ public class UIController : MonoBehaviour
     public void GameLoss()
     {
         lossScreenUI.SetActive(true);
+        pickUpPopUp.SetActive(false);
+        minimumFoodPopUp.SetActive(false);
         gameUI.SetActive(false);
         isHidden = true;
         Time.timeScale = 0;
@@ -237,7 +234,7 @@ public class UIController : MonoBehaviour
 
     public void StartPopUps(int coin)
     {
-        if (coin >= GameManager.Instance.levelWinScore && popCheck == true)
+        if (coin >= GameManager.Instance.levelWin && popCheck == true)
         {
             StartCoroutine(CanLeavePopUp());
             popCheck = false;

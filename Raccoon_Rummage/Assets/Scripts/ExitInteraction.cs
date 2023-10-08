@@ -23,7 +23,7 @@ public class ExitInteraction : MonoBehaviour, I_Interactable
         else 
         { 
             Debug.Log("Not enough points to win" + GameManager.Instance.score);
-            prompt = "Not enough pointsto win " + GameManager.Instance.score + "/ " + GameManager.Instance.levelWin;
+            prompt = "Not enough points to win " + GameManager.Instance.score + "/ " + GameManager.Instance.levelWin;
         }    
         
         return true;
@@ -48,7 +48,7 @@ public class ExitInteraction : MonoBehaviour, I_Interactable
         }
         else
         {
-            prompt = "Not enough pointsto win " + GameManager.Instance.score + "/ " + GameManager.Instance.levelWin;
+            prompt = "Not enough points to win " + GameManager.Instance.score + "/ " + GameManager.Instance.levelWin;
             exitLight.SetActive(false);
         }
 
