@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Interaction class script
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

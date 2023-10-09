@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Exit interaction script
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +18,7 @@ public class ExitInteraction : MonoBehaviour, I_Interactable
 
     public bool Interact(Interactor interactor)
     {
-        //checks if the player has enough score to leave and displays a message via the prompt if they don't [on interaction] 
+        //Checks if the player has enough score to leave and displays a message via the prompt if they don't. [on interaction] 
         if(GameManager.Instance.levelWin <= GameManager.Instance.score)
         {
             //does the interaction
@@ -22,6 +27,7 @@ public class ExitInteraction : MonoBehaviour, I_Interactable
         }
         else 
         { 
+            //Displays a prompt indecating the number of points the player needs to win. [on interaction]
             Debug.Log("Not enough points to win" + GameManager.Instance.score);
             prompt = "Not enough points to win " + GameManager.Instance.score + "/ " + GameManager.Instance.levelWin;
         }    
@@ -32,14 +38,14 @@ public class ExitInteraction : MonoBehaviour, I_Interactable
 
     private void OnDrawGizmos()
     {
-        //Draws a cube to display they interactable area within the editor
+        //Draws a cube to display they interactable area within the editor.
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(boxCollider.bounds.center, boxCollider.bounds.size);
     }
 
     private void FixedUpdate()
     {
-        //checks if the player has enough score to leave and displays a message via the prompt if they don't 
+        //Checks if the player has enough score to leave and displays a message via the prompt if they don't. 
         if (GameManager.Instance.levelWin <= GameManager.Instance.score)
         {
 

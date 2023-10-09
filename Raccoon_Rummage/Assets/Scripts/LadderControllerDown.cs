@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Decend ladder interaction script
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +18,10 @@ public class LadderControllerDown : MonoBehaviour, I_Interactable
 
     public bool Interact(Interactor interactor)
     {
-       
-            PlayerCharacter.enabled = false;
-            character.transform.position = ladderBottomPos.transform.position;
-            PlayerCharacter.enabled = true;
+        //Moves the player character to the position on the ladderBottomPos gameobject.
+        PlayerCharacter.enabled = false;        
+        character.transform.position = ladderBottomPos.transform.position;        
+        PlayerCharacter.enabled = true;
 
             Debug.Log("Ladder top interacted");
 

@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Game UI controller
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +34,6 @@ public class UIController : MonoBehaviour
 
     public Slider slider;
 
-    //public static int levelMax;
     private float timeLeft;
     private float maxTime;
     public bool timerOn = false;
@@ -44,13 +48,12 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Init values and set objects to there default states/ values.
         pauseMenuUI.SetActive(false);
         winScreenUI.SetActive(false);   
         lossScreenUI.SetActive(false);
         Cursor.visible = false;
         SetMaxStealth(GameManager.Instance.stealth);
-        //slider.maxValue = GameManager.Instance.stealth;    
-        //slider.value = GameManager.Instance.stealth;
 
         currentSceneName = SceneManager.GetActiveScene().name;
 
@@ -63,6 +66,7 @@ public class UIController : MonoBehaviour
 
     public void ScoreUpdate(int coin)
     {
+        //Updates the score text in the UI
         scoreText.text = "Food: " + coin.ToString() + "/ " + GameManager.Instance.levelWin;        
     }
 
@@ -75,6 +79,7 @@ public class UIController : MonoBehaviour
     {
         if(timerOn)
         {
+            //Count down timer, while time is left decrement the time value (in seconds) the updates the UI.
             if(timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
@@ -83,6 +88,7 @@ public class UIController : MonoBehaviour
             }
             else
             {
+                //If timer runs out displays the [Game Over] screen.
                 Debug.Log("Time is up");
                 timeLeft = 0;
                 timerOn = false;
@@ -90,6 +96,7 @@ public class UIController : MonoBehaviour
             }
         }
 
+        //Displays the pause menu when the [ESC] key is pressed.
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             if(isPaused == true)
@@ -102,12 +109,14 @@ public class UIController : MonoBehaviour
             }
         }
 
+        //Displays the [Game Over] screen if the stealth value hits 0.
         if (GameManager.Instance.stealth <= 0)
         {
             Debug.Log("Player Detected");
             GameLoss();
         }
 
+        //Displays the detected popup and UI changes while the player is within a detector.
         if (isHidden == false)
         {
             detected.SetActive(true);
@@ -116,6 +125,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
+            //Hides the detected popup and UI changes while the player is not in a detector.
             detected.SetActive(false);
             alarm.SetActive(false);
             hidden.SetActive(true);
@@ -124,6 +134,7 @@ public class UIController : MonoBehaviour
 
     void UpdateTimer(float currentTime)
     {
+        //Formats the timer value int Minuetes and seconds to display in the UI.
         currentTime += 1;
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
@@ -136,7 +147,8 @@ public class UIController : MonoBehaviour
 
     public void Resume()
     {
-       pauseMenuUI.SetActive(false);
+        //Resumes the game and hides the pause UI elements.
+        pauseMenuUI.SetActive(false);
         gameUI.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
@@ -145,6 +157,7 @@ public class UIController : MonoBehaviour
 
     void Pause()
     {
+        //Pauses the game and displayes only the pause UI elements.
         pauseMenuUI.SetActive(true);
         gameUI.SetActive(false);
         Time.timeScale = 0;
@@ -154,18 +167,21 @@ public class UIController : MonoBehaviour
 
     public void LoadMenu()
     {
+        //Loads the main menu scene.
         SceneManager.LoadScene("MainMenu");
         Debug.Log("Menu button hit!");
     }
 
     public void QuitGame()
     {
+        //Exits the application.
         Debug.Log("Quitting game...");
         Application.Quit();
     }
 
     public void Restart()
     {
+        //Loads the current level.
         GameManager.Instance.ResetValues();
         SceneManager.LoadScene(currentSceneName);
         Debug.Log("Reloading level...");
@@ -173,6 +189,7 @@ public class UIController : MonoBehaviour
 
     public void GameWon()
     {
+        //Displays only the game won UI elements.
         Time.timeScale = 0;
         isPaused = true;
         winScreenUI.SetActive(true); 
@@ -185,6 +202,7 @@ public class UIController : MonoBehaviour
 
     public void GameLoss()
     {
+        //Displays only the game over UI elements.
         lossScreenUI.SetActive(true);
         pickUpPopUp.SetActive(false);
         minimumFoodPopUp.SetActive(false);
@@ -197,17 +215,20 @@ public class UIController : MonoBehaviour
 
     public void SetStealth(int stealth)
     {
+        //Sets the slider UI element.
         slider.value = stealth;
     }
 
     public void SetMaxStealth(int stealthMax)
     {
+        //Sets the max stealth values in the slider UI elements.
         slider.maxValue = stealthMax;
         slider.value = stealthMax;
     }
 
     public void SetClockRot(float timeLeft)
     {
+        //Rotates the clock UI element as the time decreases. [UPDATE TO PREVENT OVER ROTATION!]
         float percentPassed;
 
         percentPassed = timeLeft / maxTime * 100;
@@ -216,6 +237,7 @@ public class UIController : MonoBehaviour
 
     IEnumerator PickUpPopUp()
     {
+        //Displays the pickup popup with the appropreate value for the pickup obtained.
         Debug.Log("popup");
         pickUpPopUp.SetActive(true);
         popUpText.text = "+" + pickUpValue;
@@ -226,6 +248,7 @@ public class UIController : MonoBehaviour
 
     IEnumerator CanLeavePopUp()
     {
+        //Displays the can leave popup 
         minimumFoodPopUp.SetActive(true);       
         yield return new WaitForSeconds(5f);
 
@@ -234,6 +257,7 @@ public class UIController : MonoBehaviour
 
     public void StartPopUps(int coin)
     {
+        //Used by external scripts to start the appropreate popup coroutine.
         if (coin >= GameManager.Instance.levelWin && popCheck == true)
         {
             StartCoroutine(CanLeavePopUp());

@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Enemy patrol movement script
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +13,6 @@ public class Patrol : MonoBehaviour
     public float startWaitTime;
     public float rotSpeed;
     public bool isMoving;
-   //Added for declaring turn directions on collision with patrol point
     public bool TurnRight;
     public bool TurnLeft;
 
@@ -17,7 +21,6 @@ public class Patrol : MonoBehaviour
     private int nextSpot;
     private float waitTime;
     private Vector3 nextSpotTrans;
-   //private bool canRot = true;
 
     private void Start()
     {
@@ -25,26 +28,27 @@ public class Patrol : MonoBehaviour
         waitTime = startWaitTime;
         nextSpot = 0;
         isMoving = true;
-       //Set to true when colliding with patrol points
+
         TurnRight= false;
         TurnLeft = false;
     }
 
     private void Update()
     {
+        //Finds the next position to move to in the array and sets the direction for the anim controller.
         nextSpotTrans = patrolSpots[nextSpot].transform.position;
         FindDirection();
 
         
-        //checks to see if the "enemy" has reached the point, within a reasonable distance
+        //Checks to see if the "enemy" has reached the point, within a reasonable distance.
         if (Vector3.Distance(transform.position, patrolSpots[nextSpot].transform.position) < 0.12f)
         {
             isMoving = true;
 
-            //waits for a time then moves to the next patrol point
+            //Waits for a time then moves to the next patrol point.
             if (waitTime <= 0)
             {
-                //loops the patrol route 
+                //Loops the patrol route.
                 if (nextSpot >= patrolSpots.Length - 1) { nextSpot = 0; }
                 else { nextSpot++; }
                 
@@ -56,7 +60,7 @@ public class Patrol : MonoBehaviour
         {
         LookAtTarget(patrolSpots[nextSpot].transform);
 
-        //moves the "enemy" towards a point set by the patrolSpots array
+        //Moves the "enemy" towards a point set by the patrolSpots array.
         transform.position = Vector3.MoveTowards(transform.position, nextSpotTrans, moveSpeed * Time.deltaTime);
 
         }
@@ -64,6 +68,7 @@ public class Patrol : MonoBehaviour
 
     private void LookAtTarget(Transform target)
     {
+        //Rotates the "enemy" towards the next patrolSpot.
         Vector3 direction = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
@@ -72,7 +77,7 @@ public class Patrol : MonoBehaviour
     private void FindDirection()
     {
         PatrolPointDir patrolPointDir = patrolSpots[nextSpot].GetComponent<PatrolPointDir>();
-
+        //Finds the direction of the next patrolSpot, as defined by the PatrolPointDir script found on each of the gameobjects, and sets the anim bool values as appropreate.
         if (patrolPointDir.leftTurn == true && patrolPointDir.rightTurn == false)
         {
             TurnLeft = true;

@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Bin/ Minigames interaction script
+   Written by Jack Limerick
+   34190313 */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,25 +23,25 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
-        //Passes by reff 3 of the objs it locates and puts them into the array 'colliders' and returns the total num of said found objs
+        //Passes by reff 3 of the objects it locates and puts them into the array 'colliders' and returns the total number of said found objects.
         numFound = Physics.OverlapSphereNonAlloc(interactionPoint.position, interactionPointRadius, colliders, interactableMask);
 
         if (numFound > 0)
         {
            interactable = colliders[0].GetComponent<I_Interactable>();
 
-            //checks to see if there is an interacatble obj in the array
+            //Checks to see if there is an interacatble object in the array.
             if (interactable != null)
             {
-                //displays the interact prompt
+                //Displays the interact prompt.
                 if (!interactionPrompt_UI.IsDisplayed) interactionPrompt_UI.SetUp(interactable.interactionPrompt);
-                //looks for correct input 
+                //Looks for correct input.
                 if (Input.GetKeyDown("e") == true) interactable.Interact(this);
             }
         }
         else
         {
-            //hides the interact prompt
+            //Hides the interact prompt.
             if (interactable != null) interactable = null;
             if (interactionPrompt_UI.IsDisplayed) interactionPrompt_UI.Close();
         }
@@ -44,7 +49,7 @@ public class Interactor : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        //Draws a sphere to indicate the interaction point radius
+        //Draws a sphere to indicate the interaction point radius.
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(interactionPoint.position, interactionPointRadius);
     }

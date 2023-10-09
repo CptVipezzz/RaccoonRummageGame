@@ -1,3 +1,9 @@
+/* Raccoon Rummage
+   Rotating an object towards anouther
+   DEFUNCT!
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

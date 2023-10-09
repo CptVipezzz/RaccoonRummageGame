@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Detection/ stealth script
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -22,17 +27,17 @@ public class StealthDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //checks the tag of the trigger to ensure it is a detecter
+        //Checks the tag of the trigger to ensure it is a detecter.
         if (other.gameObject.tag == "LowDetect" || other.gameObject.tag == "MidDetect" || other.gameObject.tag == "HighDetect")
         {
-            //allows for passive drain of stealth while in the trigger
+            //Allows for passive drain of stealth while in the trigger.
             otherObject = other.gameObject;
             isDetected = true;
-            Debug.Log("detected by " + this.gameObject.name);
+            Debug.Log("detected by " + other.gameObject.name);
         }
         else if (other.gameObject.tag == "SingleDetect")
         {
-            //one off stealth drain
+            //One off stealth drain.
             stealth -= 15;
             Debug.Log(this.gameObject.name + " Detected by " + other.gameObject.name);
             UpdateStealthText();
@@ -41,16 +46,16 @@ public class StealthDetection : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //checks the tag of the trigger to ensure it is a detecter
+        //Checks the tag of the trigger to ensure it is a detecter.
         if (other.gameObject.tag == "LowDetect" || other.gameObject.tag == "MidDetect" || other.gameObject.tag == "HighDetect")
         {
             //stops the passive drain on stealth
             isDetected = false;
-            Debug.Log(this.gameObject.name + " Detected by " + other.gameObject.name);
+            Debug.Log(other.gameObject.name + " Detected by " + other.gameObject.name);
         }
     }
 
-    //updates the stealth text[deprecated] and the value within the gamemanager
+    //Updates the value of stealth within the gamemanager and the UI.
     public void UpdateStealthText()
     {
         UIController.StealthUpdate(stealth);
@@ -59,7 +64,7 @@ public class StealthDetection : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //dictates by how much stealth is drained overtime via the gameobjects tag
+        //Dictates by how much stealth is drained overtime via the gameobjects tag.
         while (isDetected == true && Time.time > stealthDrain + lastTick)
         {
             if (otherObject.tag == "LowDetect")
@@ -79,7 +84,7 @@ public class StealthDetection : MonoBehaviour
            
         }
 
-        //sets the is hidden value in the UIController to enact UI chages 
+        //Sets the is hidden value in the UIController to enact UI changes.
         if (isDetected == true)
         {
             UIController.isHidden = false;
@@ -94,7 +99,7 @@ public class StealthDetection : MonoBehaviour
         //Debug.Log("Stealth updateted" + otherObject.tag + " - " + stealth);
     }
 
-    //drains stealth on bin interaction
+    //drains stealth on bin interaction [TO BE CHANGED ON ADDITION OF MINIGAMES!]
     public void BinRummage()
     {
         stealth -= 10;

@@ -1,3 +1,8 @@
+/* Raccoon Rummage
+   Interaction prompt script
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,7 +16,7 @@ public class InteractionPrompt_UI : MonoBehaviour
 
     private void Start()
     {
-        //takes a reff of the camera obj and hides the prompt
+        //Takes a reff of the camera obj and hides the prompt.
         mainCam = Camera.main;
         if (mainCam == null) { Debug.Log("mainCam is Null"); }
         uiPanel.SetActive(false);
@@ -19,7 +24,7 @@ public class InteractionPrompt_UI : MonoBehaviour
 
     private void LateUpdate()
     {
-        //rotates the obj to look at the camera
+        //Rotates the obj to look at the camera.
         var rotation = mainCam.transform.rotation;
         transform.LookAt(transform.position + rotation * Vector3.forward, rotation * Vector3.up);
     }
@@ -27,7 +32,7 @@ public class InteractionPrompt_UI : MonoBehaviour
     public bool IsDisplayed = false;
     public void SetUp(string promptText)
     {
-        //unhides the prompt and adds the appropreate text
+        //Unhides the prompt and adds the appropreate text.
         PromptText.text = promptText;
         uiPanel.SetActive(true);
         IsDisplayed = true; 
@@ -35,7 +40,7 @@ public class InteractionPrompt_UI : MonoBehaviour
 
     public void Close()
     {
-        //hides the interact prompt 
+        //Hides the interact prompt. 
         uiPanel.SetActive(false);
         IsDisplayed = false;
     }

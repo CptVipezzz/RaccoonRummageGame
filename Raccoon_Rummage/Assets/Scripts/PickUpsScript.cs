@@ -1,3 +1,9 @@
+/* Raccoon Rummage
+   Pickups script
+   DEFUNCT!
+   Written by Jack Limerick
+   34190313 */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
