@@ -18,24 +18,33 @@ public class StealthDetection : MonoBehaviour
 
     public UIController UIController;
     private float stealthDrain = 0.5f;
+    private bool concealed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         isDetected = false;
+        concealed = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Checks the tag of the trigger to ensure it is a detecter.
-        if (other.gameObject.tag == "LowDetect" || other.gameObject.tag == "MidDetect" || other.gameObject.tag == "HighDetect")
+        //Checks to see if the player is currently in an object that grants concealed.
+        if  (other.gameObject.tag == "Concealed")
+        {
+            concealed = true;
+            Debug.Log("Concealed");
+        }
+
+        //Checks the tag of the trigger to ensure it is a detecter and that the player isnt concealed.
+        if ((other.gameObject.tag == "LowDetect" || other.gameObject.tag == "MidDetect" || other.gameObject.tag == "HighDetect") && concealed == false)
         {
             //Allows for passive drain of stealth while in the trigger.
             otherObject = other.gameObject;
             isDetected = true;
             Debug.Log("detected by " + other.gameObject.name);
         }
-        else if (other.gameObject.tag == "SingleDetect")
+        else if (other.gameObject.tag == "SingleDetect" && concealed == false)
         {
             //One off stealth drain.
             stealth -= 15;
@@ -52,6 +61,12 @@ public class StealthDetection : MonoBehaviour
             //stops the passive drain on stealth
             isDetected = false;
             Debug.Log(other.gameObject.name + " Detected by " + other.gameObject.name);
+        }
+
+        //Reverts the concealed var to its default state once the trigger has been left.
+        if (other.gameObject.tag == "Concealed")
+        {
+            concealed = false;
         }
     }
 
