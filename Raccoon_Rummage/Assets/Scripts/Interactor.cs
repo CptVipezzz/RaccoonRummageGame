@@ -12,7 +12,7 @@ using UnityEngine;
 public class Interactor : MonoBehaviour
 {
     [SerializeField] private Transform interactionPoint;
-    [SerializeField] private float interactionPointRadius = 1.5f;
+    [SerializeField] private float interactionPointRadius = 2.5f;
     [SerializeField] private LayerMask interactableMask;
     [SerializeField] private int numFound;
     [SerializeField] private InteractionPrompt_UI interactionPrompt_UI;
