@@ -27,9 +27,11 @@ public class ObjectInteraction : MonoBehaviour, I_Interactable
     {
         while (canInteract == true)
         {
-            //does the interaction
+            /*//does the interaction
             CoinCollection.BinInteract();
-            PopUp();
+            PopUp();*/
+
+            UIController.PlayMiniGame();            
             canInteract = false;
             binBag.SetActive(false);
             trashPile?.SetActive(true);

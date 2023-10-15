@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Web;
 
 public class ButtonMashMiniGame : MonoBehaviour
 {
@@ -24,16 +25,24 @@ public class ButtonMashMiniGame : MonoBehaviour
     public int timerMax;
 
     public TextMeshProUGUI promptText;
+    public TextMeshProUGUI timerText;
     public Slider slider;
     public GameObject thisMinigame;
+
+    public UIController UIController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentTime = timerMax;
+        currentValue = barStartValue;
+        slider.maxValue = 100;
+        slider.value = currentValue;
+        drainTimer = 0;
+
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         currentTime = timerMax;
         currentValue = barStartValue;
@@ -82,6 +91,7 @@ public class ButtonMashMiniGame : MonoBehaviour
                 }
 
                 //Debug.Log(currentValue);
+                UpdateTimer(currentTime);
                 SetSlider();
                 timerOn = true;
             }
@@ -90,7 +100,7 @@ public class ButtonMashMiniGame : MonoBehaviour
             {
                 timerOn = false;
                 Debug.Log("Time is up");
-                GameOver();
+                UIController.MiniGameLoss();
             }
 
             //Win state, once the player hits 100 and theres still time.
@@ -98,7 +108,7 @@ public class ButtonMashMiniGame : MonoBehaviour
             {
                 timerOn = false;
                 Debug.Log("Game Won");
-                //Win
+                UIController.MiniGameWin();
             }
 
             //Increases the players score through "mashing".
@@ -115,19 +125,15 @@ public class ButtonMashMiniGame : MonoBehaviour
         //Sets the slider UI element
         slider.value = currentValue;
     }
-    void GameOver()
+    void UpdateTimer(float currentTime)
     {
-        GameManager.Instance.stealth -= 10;
-        //Displays loss screen.
-        thisMinigame.SetActive(false);
+        string tmpTime;
 
+        currentTime += 1;
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+        tmpTime = string.Format("{0:00} : {1:00}", minutes, seconds);
+        timerText.text = tmpTime;
     }
-
-    void GameWon()
-    {
-        GameManager.Instance.score += 5;
-        //Displays win screen.
-        thisMinigame.SetActive(false);
-    }
-
 }

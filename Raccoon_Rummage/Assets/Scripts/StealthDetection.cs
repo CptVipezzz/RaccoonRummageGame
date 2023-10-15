@@ -18,7 +18,7 @@ public class StealthDetection : MonoBehaviour
 
     public UIController UIController;
     private float stealthDrain = 0.5f;
-    private bool concealed = false;
+    public bool concealed = false;
 
     // Start is called before the first frame update
     void Start()

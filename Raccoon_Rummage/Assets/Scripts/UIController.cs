@@ -32,6 +32,11 @@ public class UIController : MonoBehaviour
     public GameObject pickUpPopUp;
     public GameObject minimumFoodPopUp;
 
+    public GameObject[] miniGames;
+
+    public StealthDetection StealthDetection;
+    public CoinCollection CoinCollection;
+
     public Slider slider;
 
     private float timeLeft;
@@ -42,6 +47,10 @@ public class UIController : MonoBehaviour
     public bool isHidden = true;
     public int pickUpValue;
     private bool popCheck = true;
+    private int arrayLength;
+    private bool softPause = false;
+
+    private GameObject currentMiniGame;
 
     private string tmpTime;
 
@@ -54,6 +63,8 @@ public class UIController : MonoBehaviour
         lossScreenUI.SetActive(false);
         Cursor.visible = false;
         SetMaxStealth(GameManager.Instance.stealth);
+
+        LoadMiniGame();
 
         currentSceneName = SceneManager.GetActiveScene().name;
 
@@ -265,5 +276,66 @@ public class UIController : MonoBehaviour
         }
 
         StartCoroutine(PickUpPopUp());
+    }
+
+    public void PlayMiniGame()
+    {
+        LoadMiniGame();
+        SoftPause();
+
+        currentMiniGame.SetActive(true);
+        gameUI.SetActive(false);
+        //Time.timeScale = 0f;
+
+    }
+
+    void LoadMiniGame()
+    {
+        int rdm;
+
+        arrayLength = miniGames.Length;
+
+        rdm = Random.Range(0, arrayLength - 1);
+        currentMiniGame = miniGames[rdm];
+        Debug.Log("Mingame " + currentMiniGame + " loaded");
+
+    }
+
+    void SoftPause()
+    {
+        if (softPause == false)
+        {
+            softPause = true;
+            timerOn = false;
+            StealthDetection.concealed = true;
+        }
+        else
+        {
+            softPause = false;
+            timerOn = true;
+            StealthDetection.concealed = false;
+        }
+    }
+
+    public void MiniGameLoss()
+    {
+        SoftPause();
+        //Displays loss screen.
+        StealthDetection.BinRummage();
+        StealthUpdate(GameManager.Instance.stealth);
+
+        currentMiniGame.SetActive(false);
+        gameUI.SetActive(true);
+    }
+
+    public void MiniGameWin()
+    {
+        SoftPause();
+        //Displays win screen.
+        CoinCollection.BinInteract();
+
+        StartPopUps(CoinCollection.coin);
+        currentMiniGame.SetActive(false);
+        gameUI.SetActive(true);
     }
 }

@@ -3,8 +3,10 @@
    Written by Jack Limerick
    34190313 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorInteraction : MonoBehaviour, I_Interactable
@@ -21,6 +23,7 @@ public class DoorInteraction : MonoBehaviour, I_Interactable
 
     public bool Interact(Interactor interactor)
     {
+
         //Checks to see if the "door" is currently open of closed.
         if (doorOpen == false)
         {
@@ -28,6 +31,7 @@ public class DoorInteraction : MonoBehaviour, I_Interactable
             prompt = "Press 'E' to open!";
             pivotPoint.transform.Rotate(defaultState.x, defaultState.y + openAngle, defaultState.z); 
             doorOpen = true;
+            Debug.Log(defaultState.y);
         }
         else if (doorOpen == true)
         {
@@ -35,7 +39,13 @@ public class DoorInteraction : MonoBehaviour, I_Interactable
             prompt = "Press 'E' to close!";
             pivotPoint.transform.Rotate(defaultState.x, defaultState.y - openAngle, defaultState.z);
             doorOpen = false;
+            Debug.Log(defaultState.y);
+            
         }
+       /* else
+        {
+            Debug.Log("Interaction error " + doorOpen);
+        }*/
 
         return true;
     }
