@@ -17,7 +17,7 @@ public class DoorInteraction : MonoBehaviour, I_Interactable
     public string interactionPrompt => prompt;
     public GameObject pivotPoint;
 
-    float openAngle = 90f;
+    float openAngle = 90.0f;
     bool doorOpen = false;
     Quaternion defaultState;
 
@@ -31,7 +31,7 @@ public class DoorInteraction : MonoBehaviour, I_Interactable
             prompt = "Press 'E' to open!";
             pivotPoint.transform.Rotate(defaultState.x, defaultState.y + openAngle, defaultState.z); 
             doorOpen = true;
-            Debug.Log(defaultState.y);
+            //Debug.Log(defaultState.y);
         }
         else if (doorOpen == true)
         {
@@ -39,7 +39,7 @@ public class DoorInteraction : MonoBehaviour, I_Interactable
             prompt = "Press 'E' to close!";
             pivotPoint.transform.Rotate(defaultState.x, defaultState.y - openAngle, defaultState.z);
             doorOpen = false;
-            Debug.Log(defaultState.y);
+            //Debug.Log(defaultState.y);
             
         }
        /* else
@@ -55,6 +55,7 @@ public class DoorInteraction : MonoBehaviour, I_Interactable
     {
         //Sets the default values and positions.
         defaultState = pivotPoint.transform.rotation;
+        defaultState.y = 0;
         prompt = "Press 'E' to open!";
     }
 
