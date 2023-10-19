@@ -38,6 +38,12 @@ public class CoinCollection : MonoBehaviour
             Destroy(other.gameObject);
             PopUp();
         }
+        //
+        else if (other.gameObject.tag == "StealthRegen")
+        {
+            stealthDetection.stealth += 10;
+            other.gameObject.SetActive(false);
+        }
 
         //Updates the UI score text.
         UpdateScoreText();
@@ -48,7 +54,6 @@ public class CoinCollection : MonoBehaviour
     {
         coin += 5;
         UIController.pickUpValue = 5;
-        stealthDetection.BinRummage();
         UpdateScoreText();
     }
 

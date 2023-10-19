@@ -3,6 +3,7 @@
    Written by Jack Limerick
    34190313 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,7 +13,7 @@ public class StealthDetection : MonoBehaviour
 {
     private GameObject otherObject;
 
-    private int stealth = 100;
+    public int stealth = 100; //switch back after test!
     private bool isDetected = false;
     private float lastTick = 0f;
 
@@ -20,11 +21,22 @@ public class StealthDetection : MonoBehaviour
     private float stealthDrain = 0.5f;
     public bool concealed = false;
 
+    //
+    public bool regenTest;
+    public float regenDelay;
+    public float regenAmount;
+    float regenTimer = 0;
+    //
+
     // Start is called before the first frame update
     void Start()
     {
         isDetected = false;
         concealed = false;
+
+        //
+        regenTimer = 0;
+        //
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,6 +121,20 @@ public class StealthDetection : MonoBehaviour
             UIController.isHidden = true;
         }
     
+        //
+        regenTimer += Time.deltaTime;
+
+        if (regenTimer > regenDelay && regenTest == true && stealth < 100)
+        {
+            stealth += Convert.ToInt32(regenAmount);
+            regenTimer = 0;
+        }
+        else if (regenTimer > regenDelay && regenTest == true && stealth >= 100)
+        {
+            stealth = 100;
+            regenTimer = 0;
+        }
+        //
 
         UpdateStealthText();
         //Debug.Log("Stealth updateted" + otherObject.tag + " - " + stealth);
