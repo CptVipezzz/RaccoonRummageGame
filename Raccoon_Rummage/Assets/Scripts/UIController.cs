@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Cinemachine;
 
 public class UIController : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class UIController : MonoBehaviour
     public GameObject pickUpPopUp;
     public GameObject minimumFoodPopUp;
 
+    public GameObject playCharacter;
+    public GameObject playerCamera;
+    ThirdPersonControl controller;
+    CinemachineFreeLook freeLook;
+
     public GameObject[] miniGames;
 
     public StealthDetection StealthDetection;
@@ -48,7 +54,8 @@ public class UIController : MonoBehaviour
     public int pickUpValue;
     private bool popCheck = true;
     private int arrayLength;
-    private bool softPause = false;
+
+    public bool softPause = false;
 
     private GameObject currentMiniGame;
 
@@ -73,6 +80,9 @@ public class UIController : MonoBehaviour
         timeLeft = maxTime;
         timerOn = true;
         popCheck = true;
+
+        controller = playCharacter.GetComponent<ThirdPersonControl>();
+        freeLook = playerCamera.GetComponent<CinemachineFreeLook>();    
     }
 
     public void ScoreUpdate(int coin)
@@ -307,12 +317,16 @@ public class UIController : MonoBehaviour
         {
             softPause = true;
             timerOn = false;
+            controller.enabled = false;
+            freeLook.enabled = false;
             StealthDetection.concealed = true;
         }
         else
         {
             softPause = false;
             timerOn = true;
+            controller.enabled = true;
+            freeLook.enabled = true;
             StealthDetection.concealed = false;
         }
     }

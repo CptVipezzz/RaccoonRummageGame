@@ -115,7 +115,6 @@ public class ButtonMashMiniGame : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 currentValue += clickRate;
-                Debug.Log("pressed E");
             }
         }
     }

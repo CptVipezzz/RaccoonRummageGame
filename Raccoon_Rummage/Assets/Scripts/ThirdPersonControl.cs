@@ -20,6 +20,7 @@ public class ThirdPersonControl : MonoBehaviour
 {
 
     public CharacterController controller;
+    public StealthDetection StealthDetection;
     public Transform cam;
 
     [SerializeField] private float gravityMultiplyer = 0.5f;
@@ -39,6 +40,11 @@ public class ThirdPersonControl : MonoBehaviour
     void Update()
     {
         Movement();
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            StealthDetection.StartDelay();
+        }
     }
 
     private void Movement()
@@ -76,6 +82,7 @@ public class ThirdPersonControl : MonoBehaviour
         if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
         {
             controller.Move(sprintSpeed * Time.deltaTime * moveDir.normalized);
+            StealthDetection.regenPaused = true;
         }
         else
         {
