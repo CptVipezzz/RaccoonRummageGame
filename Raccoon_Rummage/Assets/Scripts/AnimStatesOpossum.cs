@@ -11,7 +11,6 @@ public class AnimStatesOpossum : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        //patrol = GetComponent<Patrol>();
     }
 
     // Update is called once per frame
