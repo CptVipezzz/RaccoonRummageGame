@@ -29,7 +29,7 @@ public class Patrol : MonoBehaviour
         nextSpot = 0;
         isMoving = true;
 
-        TurnRight= false;
+        TurnRight = false;
         TurnLeft = false;
     }
 
@@ -39,7 +39,7 @@ public class Patrol : MonoBehaviour
         nextSpotTrans = patrolSpots[nextSpot].transform.position;
         FindDirection();
 
-        
+
         //Checks to see if the "enemy" has reached the point, within a reasonable distance.
         if (Vector3.Distance(transform.position, patrolSpots[nextSpot].transform.position) < 0.12f)
         {
@@ -51,17 +51,17 @@ public class Patrol : MonoBehaviour
                 //Loops the patrol route.
                 if (nextSpot >= patrolSpots.Length - 1) { nextSpot = 0; }
                 else { nextSpot++; }
-                
+
                 waitTime = startWaitTime;
             }
             else { waitTime -= Time.deltaTime; isMoving = false; }
         }
         else
         {
-        LookAtTarget(patrolSpots[nextSpot].transform);
+            LookAtTarget(patrolSpots[nextSpot].transform);
 
-        //Moves the "enemy" towards a point set by the patrolSpots array.
-        transform.position = Vector3.MoveTowards(transform.position, nextSpotTrans, moveSpeed * Time.deltaTime);
+            //Moves the "enemy" towards a point set by the patrolSpots array.
+            transform.position = Vector3.MoveTowards(transform.position, nextSpotTrans, moveSpeed * Time.deltaTime);
 
         }
     }

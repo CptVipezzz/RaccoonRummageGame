@@ -31,7 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2634481611410747313}
-  - {fileID: 5281189517467594168}
   m_Father: {fileID: 1404577215483579050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -71,6 +70,7 @@ MonoBehaviour:
   - {fileID: 1404577216348876043}
   - {fileID: 1404577215306463802}
   - {fileID: 1404577215930741640}
+  detectersLookAt: {fileID: 0}
 --- !u!1 &1404577215306463802
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,13 +412,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4759419791608705472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.0004346664, z: -0.04486908}
+  m_LocalScale: {x: 0.040000007, y: 0.040000007, z: 0.040000007}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 161227580779792323}
   - {fileID: 6749559459401576379}
-  m_Father: {fileID: 1404577215049813485}
+  m_Father: {fileID: 6531438030481910401}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &411642705552957480
@@ -597,7 +597,10 @@ PrefabInstance:
       value: 3DMODELS_Characters_Final_Possum_Possum_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8764394259392176859, guid: ba9297177b0d4894283cd3b854e4d6eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5281189517467594168}
   m_SourcePrefab: {fileID: 100100000, guid: ba9297177b0d4894283cd3b854e4d6eb, type: 3}
 --- !u!4 &2634481611410747313 stripped
 Transform:
@@ -642,3 +645,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrol: {fileID: 1404577215049813458}
+--- !u!4 &6531438030481910401 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8764394259392176859, guid: ba9297177b0d4894283cd3b854e4d6eb, type: 3}
+  m_PrefabInstance: {fileID: 2523483004665514074}
+  m_PrefabAsset: {fileID: 0}
