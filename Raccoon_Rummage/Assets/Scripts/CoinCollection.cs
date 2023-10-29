@@ -41,7 +41,7 @@ public class CoinCollection : MonoBehaviour
         //
         else if (other.gameObject.tag == "StealthRegen")
         {
-            stealthDetection.stealth += 10;
+            stealthDetection.StealthRegenAmount();
             other.gameObject.SetActive(false);
         }
 

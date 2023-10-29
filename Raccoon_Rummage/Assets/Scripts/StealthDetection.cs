@@ -14,7 +14,7 @@ public class StealthDetection : MonoBehaviour
 {
     private GameObject otherObject;
 
-    public int stealth = 100; //switch back after test!
+    private int stealth = 100; 
     private bool isDetected = false;
     private float lastTick = 0f;
 
@@ -32,6 +32,7 @@ public class StealthDetection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stealth = 100;
         isDetected = false;
         concealed = false;
         regenTimer = 0;
@@ -165,5 +166,10 @@ public class StealthDetection : MonoBehaviour
     public void StartDelay()
     {
         StartCoroutine(DelayTimer());
+    }
+
+    public void StealthRegenAmount()
+    {
+        stealth += 10;
     }
 }

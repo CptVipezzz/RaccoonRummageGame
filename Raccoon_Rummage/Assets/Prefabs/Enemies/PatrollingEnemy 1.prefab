@@ -70,7 +70,6 @@ MonoBehaviour:
   - {fileID: 1404577216348876043}
   - {fileID: 1404577215306463802}
   - {fileID: 1404577215930741640}
-  detectersLookAt: {fileID: 0}
 --- !u!1 &1404577215306463802
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,11 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a905ef5282a44f45805a9fe5f8cdbce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6900002
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a905ef5282a44f45805a9fe5f8cdbce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.26
+      value: 8.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a905ef5282a44f45805a9fe5f8cdbce, type: 3}
       propertyPath: m_LocalRotation.w

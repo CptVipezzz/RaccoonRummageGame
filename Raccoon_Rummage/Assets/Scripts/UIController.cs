@@ -42,6 +42,7 @@ public class UIController : MonoBehaviour
 
     public StealthDetection StealthDetection;
     public CoinCollection CoinCollection;
+    public LevelData LevelData;
 
     public Slider slider;
 
@@ -76,13 +77,15 @@ public class UIController : MonoBehaviour
         currentSceneName = SceneManager.GetActiveScene().name;
 
         scoreText.text = "Food: 0/ " + GameManager.Instance.levelWin;
-        maxTime = GameManager.Instance.levelTimeMax; 
-        timeLeft = maxTime;
+        timeLeft = LevelData.levelTime;
+        maxTime = LevelData.levelTime;
         timerOn = true;
         popCheck = true;
 
         controller = playCharacter.GetComponent<ThirdPersonControl>();
-        freeLook = playerCamera.GetComponent<CinemachineFreeLook>();    
+        freeLook = playerCamera.GetComponent<CinemachineFreeLook>();
+
+        clockFace.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void ScoreUpdate(int coin)
@@ -250,10 +253,16 @@ public class UIController : MonoBehaviour
     public void SetClockRot(float timeLeft)
     {
         //Rotates the clock UI element as the time decreases. [UPDATE TO PREVENT OVER ROTATION!]
-        float percentPassed;
+        //Debug.Log(maxTime + "/ " + timeLeft);
+        float rotAmount = 1.8f;
+        float percentPassed = (timeLeft / maxTime);
+        percentPassed = percentPassed * 100f;
+        float realPercentPassed = 100f - percentPassed;
+        float currentRot = (rotAmount * realPercentPassed);
 
-        percentPassed = timeLeft / maxTime * 100;
-        clockFace.transform.rotation = Quaternion.Euler(0, 0, 1.8f * percentPassed);   
+        //Debug.Log(rotAmount + "/ " + percentPassed + "/ " + currentRot + "/ " + realPercentPassed);
+
+        clockFace.transform.rotation = Quaternion.Euler(0, 0, -currentRot );   
     }
 
     IEnumerator PickUpPopUp()
