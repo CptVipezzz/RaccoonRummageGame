@@ -252,13 +252,11 @@ public class UIController : MonoBehaviour
 
     public void SetClockRot(float timeLeft)
     {
-        //Rotates the clock UI element as the time decreases. [UPDATE TO PREVENT OVER ROTATION!]
-        //Debug.Log(maxTime + "/ " + timeLeft);
-        float rotAmount = 1.8f;
+        //Rotates the clock UI element as the time decreases.
         float percentPassed = (timeLeft / maxTime);
         percentPassed = percentPassed * 100f;
         float realPercentPassed = 100f - percentPassed;
-        float currentRot = (rotAmount * realPercentPassed);
+        float currentRot = (1.8f * realPercentPassed);
 
         //Debug.Log(rotAmount + "/ " + percentPassed + "/ " + currentRot + "/ " + realPercentPassed);
 
