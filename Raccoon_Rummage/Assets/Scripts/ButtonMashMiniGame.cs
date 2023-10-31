@@ -70,7 +70,7 @@ public class ButtonMashMiniGame : MonoBehaviour
         }
         else if (hasStarted == true)
         {
-            //Minigame timer.
+            //MiniGame timer.
             if (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;

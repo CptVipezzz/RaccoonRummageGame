@@ -76,7 +76,7 @@ public class UIController : MonoBehaviour
 
         currentSceneName = SceneManager.GetActiveScene().name;
 
-        scoreText.text = "Food: 0/ " + GameManager.Instance.levelWin;
+        scoreText.text = "Food: 0/ " + LevelData.levelScore;
         timeLeft = LevelData.levelTime;
         maxTime = LevelData.levelTime;
         timerOn = true;
