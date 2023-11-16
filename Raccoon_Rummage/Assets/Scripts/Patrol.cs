@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 1;
     public float startWaitTime;
     public float rotSpeed;
     public bool isMoving;
@@ -62,7 +62,6 @@ public class Patrol : MonoBehaviour
 
             //Moves the "enemy" towards a point set by the patrolSpots array.
             transform.position = Vector3.MoveTowards(transform.position, nextSpotTrans, moveSpeed * Time.deltaTime);
-
         }
     }
 
