@@ -6,7 +6,6 @@ public class AnimStates : MonoBehaviour
 {
     Animator anim;
     public UIController controller;
-    public ThirdPersonControl ThirdPersonControl;
 
     // Start is called before the first frame update
     void Start()
@@ -36,15 +35,6 @@ public class AnimStates : MonoBehaviour
             {
             anim.SetBool("isMoving", false);
             anim.SetBool("isSprinting", false);
-        }
-
-            if (ThirdPersonControl.grounded == false)
-        {
-            anim.SetBool("IsFalling", true);
-        }
-            else
-        {
-            anim.SetBool("IsFalling", false);
         }
 
     }

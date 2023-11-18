@@ -23,16 +23,15 @@ public class ThirdPersonControl : MonoBehaviour
     public StealthDetection StealthDetection;
     public Transform cam;
 
-    [SerializeField] private float gravityMultiplyer = 10f;
+    [SerializeField] private float gravityMultiplyer = 0.5f;
     [SerializeField] private float jumpPwr;
 
     public float speed = 6f;
     public float sprintSpeed = 3f;
     public float turnSmooth = 0.1f;
-    public bool grounded = true;
 
     float turnSmoothVelocity;
-    float gravity = 9.81f;
+    float gravity = -9.81f;
     float velocity;
     Vector3 moveDir = Vector3.zero;
 
@@ -96,13 +95,11 @@ public class ThirdPersonControl : MonoBehaviour
         //Checks to see if the player is on the ground, if not then the the player falls until they are.
         if (IsGrounded())
         {
-            velocity = -gravity * Time.deltaTime;
-            grounded = true;
+            velocity = -0f;            
         }
         else
         {
-            velocity -= (gravity * gravityMultiplyer) * Time.deltaTime;
-            grounded = false;
+            velocity += gravity * gravityMultiplyer * Time.deltaTime;
         }
         moveDir.y = velocity;
     }

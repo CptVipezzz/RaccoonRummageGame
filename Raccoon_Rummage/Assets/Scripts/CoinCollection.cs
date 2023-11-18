@@ -19,21 +19,21 @@ public class CoinCollection : MonoBehaviour
         //Checks the tag to find which value to give to the player then causes the pop-up to appear.
         if(other.gameObject.tag == "LowScoreCoin")
         { 
-            GameManager.Instance.score += 1;
+            coin += 1;
             UIController.pickUpValue = 1;
             Destroy(other.gameObject);
             PopUp();
         }
         else if (other.gameObject.tag == "MidScoreCoin")
         {
-            GameManager.Instance.score += 3;
+            coin += 3;
             UIController.pickUpValue = 3;
             Destroy(other.gameObject);
             PopUp();
         }
         else if (other.gameObject.tag == "HighScoreCoin")
         {
-            GameManager.Instance.score +=  5;
+            coin +=  5;
             UIController.pickUpValue = 5;
             Destroy(other.gameObject);
             PopUp();
@@ -52,7 +52,7 @@ public class CoinCollection : MonoBehaviour
     //Updates the score when a bin object is interacted with.
     public void BinInteract()
     {
-        GameManager.Instance.score += 5;
+        coin += 5;
         UIController.pickUpValue = 5;
         UpdateScoreText();
     }
@@ -60,8 +60,8 @@ public class CoinCollection : MonoBehaviour
     //Updates the UI score text.
    public void UpdateScoreText ()
     {
-        UIController.ScoreUpdate(GameManager.Instance.score);
-        //GameManager.Instance.score = coin;
+        UIController.ScoreUpdate(coin);
+        GameManager.Instance.score = coin;
     }
 
     public void PopUp()
@@ -69,9 +69,9 @@ public class CoinCollection : MonoBehaviour
         //Decides which pop-up to display based ont he current score.
         if ( coin == GameManager.Instance.levelWin)
         {
-            UIController.StartPopUps(GameManager.Instance.score);
+            UIController.StartPopUps(coin);
         }
-        else { UIController.StartPopUps(GameManager.Instance.score); }
+        else { UIController.StartPopUps(coin); }
     }
 
 }

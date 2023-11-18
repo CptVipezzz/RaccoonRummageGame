@@ -54,14 +54,14 @@ public class StealthDetection : MonoBehaviour
             otherObject = other.gameObject;
             isDetected = true;
             regenPaused = true;
-            Debug.Log("detected by " + other.gameObject.tag);
+            Debug.Log("detected by " + other.gameObject.name);
         }
         else if (other.gameObject.tag == "SingleDetect" && concealed == false)
         {
             //One off stealth drain.
             stealth -= 15;
             regenPaused = true;
-            Debug.Log(this.gameObject.name + " Detected by " + other.gameObject.tag);
+            Debug.Log(this.gameObject.name + " Detected by " + other.gameObject.name);
             UpdateStealthText();
         }
     }
