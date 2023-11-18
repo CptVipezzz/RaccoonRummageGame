@@ -46,7 +46,7 @@ public class QTEMiniGame : MonoBehaviour
         currentValue = 0;
         currentRot = currentValue;
         indecatorWheel.transform.rotation = Quaternion.Euler(0, 0, currentRot);
-        timerOn = false;
+        timerOn = true;
     }
 
     // Update is called once per frame
