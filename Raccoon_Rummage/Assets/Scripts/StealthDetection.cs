@@ -21,6 +21,7 @@ public class StealthDetection : MonoBehaviour
     public UIController UIController;
     private float stealthDrain = 0.5f;
     public bool concealed = false;
+    MeshRenderer MeshRenderer;
 
     public float regenDelay;
     public float regenAmount;

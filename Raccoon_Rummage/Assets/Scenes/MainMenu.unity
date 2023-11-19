@@ -1952,7 +1952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1114, y: -796}
+  m_AnchoredPosition: {x: 1303, y: -741}
   m_SizeDelta: {x: 120.3159, y: 17.2834}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055078426
@@ -2758,7 +2758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4114, y: -732}
+  m_AnchoredPosition: {x: -3521, y: -732}
   m_SizeDelta: {x: 497.4059, y: 137.3326}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325636353
@@ -2786,9 +2786,10 @@ MonoBehaviour:
     Use the mouse to look
     around.
 
-    Press "E" to interact.
+    Press "E" to interact with Bins, Doors, Gates, and Ladders.
 
-    Press "Shift" to sprint.'
+    Press
+    "Shift" to sprint.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6f2ed5e18ce56d4ea27cd1a8290b5d3, type: 2}
   m_sharedMaterial: {fileID: -1143006030247669767, guid: a6f2ed5e18ce56d4ea27cd1a8290b5d3, type: 2}
@@ -3545,7 +3546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479, y: -795.64}
+  m_AnchoredPosition: {x: 202, y: -740.64}
   m_SizeDelta: {x: 60.5723, y: 16.5537}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945217723
@@ -3700,11 +3701,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Navigate suburbia as North America's favourite pest - the raccoon! \nFind
-    food hidden up alleyways and in minigames, but avoid lights and other animals
-    that will cause your concealment to lessen.\nYour concealment will eventually
-    build up again.\nComplete the level by collecting enough food to leave, but be
-    aware that both time and stealth are not on your side.\nBe quick and be sneaky."
+  m_text: "Navigate suburbia as North America's favorite pest - the raccoon! \r\nFind
+    food hidden up alleyways and in minigames, avoid lights and other animals that
+    will cause your concealment to lessen by avoiding their daze or hiding in bushes.\r\nYour
+    concealment will eventually build up again.\r\nComplete the level by collecting
+    enough food and finding the exit, but be aware that both time and stealth are
+    not on your side.\r\nBe quick and be sneaky.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6f2ed5e18ce56d4ea27cd1a8290b5d3, type: 2}
   m_sharedMaterial: {fileID: -1143006030247669767, guid: a6f2ed5e18ce56d4ea27cd1a8290b5d3, type: 2}
@@ -3767,7 +3769,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -378.25528, y: -28.379303, z: -426.41895, w: -139.3165}
+  m_margin: {x: -544.0179, y: -28.379303, z: -553.46313, w: -139.3165}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

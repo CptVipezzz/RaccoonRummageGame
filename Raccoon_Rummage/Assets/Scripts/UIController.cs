@@ -17,8 +17,9 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI stealthMeter;
 
-    public TextMeshProUGUI finalScoreText;
-    public TextMeshProUGUI finalTimerText;
+    public TextMeshProUGUI finalScoreTextWin;
+    public TextMeshProUGUI finalTimerTextWin;
+    public TextMeshProUGUI finalScoreTextLoss;
 
     public TextMeshProUGUI popUpText;
 
@@ -33,9 +34,12 @@ public class UIController : MonoBehaviour
     public GameObject gameUI;
     public GameObject pickUpPopUp;
     public GameObject minimumFoodPopUp;
-    public GameObject starLeft;
-    public GameObject starRight;    
-    public GameObject starMiddle;
+    public GameObject starLeftWin;
+    public GameObject starRightWin;    
+    public GameObject starMiddleWin;
+    public GameObject starLeftLoss;
+    public GameObject starRightLoss;
+    public GameObject starMiddleLoss;
 
     public GameObject playCharacter;
     public GameObject playerCamera;
@@ -74,9 +78,12 @@ public class UIController : MonoBehaviour
         winScreenUI.SetActive(false);   
         lossScreenUI.SetActive(false);
 
-        starLeft.SetActive(false);
-        starRight.SetActive(false);
-        starMiddle.SetActive(false);
+        starLeftWin.SetActive(false);
+        starRightWin.SetActive(false);
+        starMiddleWin.SetActive(false);
+        starLeftLoss.SetActive(false);
+        starRightLoss.SetActive(false);
+        starMiddleLoss.SetActive(false);
 
         Cursor.visible = false;
         SetMaxStealth(GameManager.Instance.stealth);
@@ -227,27 +234,27 @@ public class UIController : MonoBehaviour
         isPaused = true;
         winScreenUI.SetActive(true); 
         gameUI.SetActive(false);
-        finalScoreText.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
-        finalTimerText.text = "You managed that with " + tmpTime + " left!";
+        finalScoreTextWin.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
+        finalTimerTextWin.text = "You managed that with " + tmpTime + " left!";
 
-        if (GameManager.Instance.score >= GameManager.Instance.levelWin && GameManager.Instance.score < 15)
+        if (GameManager.Instance.score >= GameManager.Instance.levelWin && GameManager.Instance.score < 200)
         {
-            starLeft.SetActive(true);
-            starRight.SetActive(false);
-            starMiddle.SetActive(false);
+            starLeftWin.SetActive(true);
+            starRightWin.SetActive(false);
+            starMiddleWin.SetActive(false);
         }
-        else if(GameManager.Instance.score >= 15 && GameManager.Instance.score < 20)
+        else if(GameManager.Instance.score >= 200 && GameManager.Instance.score < 275)
         {
-            starLeft.SetActive(true);
-            starRight.SetActive(true);
-            starMiddle.SetActive(false);
+            starLeftWin.SetActive(true);
+            starRightWin.SetActive(true);
+            starMiddleWin.SetActive(false);
         }
-        else if(GameManager.Instance.score >= 20)
+        else if(GameManager.Instance.score >= 275)
         {
 
-            starLeft.SetActive(true);
-            starRight.SetActive(true);
-            starMiddle.SetActive(true);
+            starLeftWin.SetActive(true);
+            starRightWin.SetActive(true);
+            starMiddleWin.SetActive(true);
         }
         Cursor.visible = true;
         Debug.Log(GameManager.Instance.score);
@@ -264,6 +271,29 @@ public class UIController : MonoBehaviour
         isHidden = true;
         Time.timeScale = 0;
         isPaused = true;
+        
+        finalScoreTextLoss.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
+
+        if (GameManager.Instance.score >= GameManager.Instance.levelWin && GameManager.Instance.score < 200)
+        {
+            starLeftLoss.SetActive(true);
+            starRightLoss.SetActive(false);
+            starMiddleLoss.SetActive(false);
+        }
+        else if (GameManager.Instance.score >= 200 && GameManager.Instance.score < 275)
+        {
+            starLeftLoss.SetActive(true);
+            starRightLoss.SetActive(true);
+            starMiddleLoss.SetActive(false);
+        }
+        else if (GameManager.Instance.score >= 275)
+        {
+
+            starLeftLoss.SetActive(true);
+            starRightLoss.SetActive(true);
+            starMiddleLoss.SetActive(true);
+        }
+
         Cursor.visible = true;
     }
 
