@@ -20,6 +20,7 @@ public class CoinCollection : MonoBehaviour
         if(other.gameObject.tag == "LowScoreCoin")
         { 
             GameManager.Instance.score += 1;
+            //SoundManager.instance.PlayPickUpClip();
             UIController.pickUpValue = 1;
             Destroy(other.gameObject);
             PopUp();
@@ -27,6 +28,7 @@ public class CoinCollection : MonoBehaviour
         else if (other.gameObject.tag == "MidScoreCoin")
         {
             GameManager.Instance.score += 3;
+            //SoundManager.instance.PlayPickUpClip();
             UIController.pickUpValue = 3;
             Destroy(other.gameObject);
             PopUp();
@@ -34,6 +36,7 @@ public class CoinCollection : MonoBehaviour
         else if (other.gameObject.tag == "HighScoreCoin")
         {
             GameManager.Instance.score +=  5;
+            //SoundManager.instance.PlayPickUpClip();
             UIController.pickUpValue = 5;
             Destroy(other.gameObject);
             PopUp();
@@ -53,6 +56,7 @@ public class CoinCollection : MonoBehaviour
     public void BinInteract()
     {
         GameManager.Instance.score += 5;
+        //SoundManager.instance.PlayPickUpClip();
         UIController.pickUpValue = 5;
         UpdateScoreText();
     }

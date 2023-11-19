@@ -223,6 +223,7 @@ public class UIController : MonoBehaviour
     {
         //Loads the current level.
         GameManager.Instance.ResetValues();
+        //SoundManager.Instance.MenuClipOff();
         SceneManager.LoadScene(currentSceneName);
         Debug.Log("Reloading level...");
     }
@@ -257,6 +258,7 @@ public class UIController : MonoBehaviour
             starMiddleWin.SetActive(true);
         }
         Cursor.visible = true;
+        //SoundManager.Instance.PlayMenuClip();
         Debug.Log(GameManager.Instance.score);
 
     }
@@ -294,6 +296,7 @@ public class UIController : MonoBehaviour
             starMiddleLoss.SetActive(true);
         }
 
+        //SoundManager.Instance.PlayMenuClip();
         Cursor.visible = true;
     }
 
@@ -372,7 +375,6 @@ public class UIController : MonoBehaviour
 
         currentMiniGame.SetActive(true);
         gameUI.SetActive(false);
-        //Time.timeScale = 0f;
 
     }
 
