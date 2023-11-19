@@ -7,6 +7,8 @@ public class SingleDetecterController : MonoBehaviour
     [SerializeField] private GameObject detecter;
     [SerializeField] private GameObject[] pigeons;
 
+    public UIController Controller;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class SingleDetecterController : MonoBehaviour
                 tmp = pigeons[i].GetComponent<AnimPigeon>();
                 tmp.detected = true;
             }
+
+            Controller.PlayDetectedPop();
         }
     }
 }

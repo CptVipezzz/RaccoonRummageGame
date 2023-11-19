@@ -433,4 +433,9 @@ public class UIController : MonoBehaviour
         currentMiniGame.SetActive(false);
         gameUI.SetActive(true);
     }
+
+    public void PlayDetectedPop()
+    {
+        StartCoroutine(MiniLossPop());
+    }
 }
