@@ -27,11 +27,15 @@ public class UIController : MonoBehaviour
     public GameObject lossScreenUI;
     public GameObject clockFace;
     public GameObject detected;
+    public GameObject altDetected;
     public GameObject hidden;
     public GameObject alarm;
     public GameObject gameUI;
     public GameObject pickUpPopUp;
     public GameObject minimumFoodPopUp;
+    public GameObject starLeft;
+    public GameObject starRight;    
+    public GameObject starMiddle;
 
     public GameObject playCharacter;
     public GameObject playerCamera;
@@ -69,6 +73,11 @@ public class UIController : MonoBehaviour
         pauseMenuUI.SetActive(false);
         winScreenUI.SetActive(false);   
         lossScreenUI.SetActive(false);
+
+        starLeft.SetActive(false);
+        starRight.SetActive(false);
+        starMiddle.SetActive(false);
+
         Cursor.visible = false;
         SetMaxStealth(GameManager.Instance.stealth);
 
@@ -220,7 +229,28 @@ public class UIController : MonoBehaviour
         gameUI.SetActive(false);
         finalScoreText.text = "Your final score is: " + GameManager.Instance.score + " out of " + GameManager.Instance.levelWin;
         finalTimerText.text = "You managed that with " + tmpTime + " left!";
+
+        if (GameManager.Instance.score >= GameManager.Instance.levelWin && GameManager.Instance.score < 15)
+        {
+            starLeft.SetActive(true);
+            starRight.SetActive(false);
+            starMiddle.SetActive(false);
+        }
+        else if(GameManager.Instance.score >= 15 && GameManager.Instance.score < 20)
+        {
+            starLeft.SetActive(true);
+            starRight.SetActive(true);
+            starMiddle.SetActive(false);
+        }
+        else if(GameManager.Instance.score >= 20)
+        {
+
+            starLeft.SetActive(true);
+            starRight.SetActive(true);
+            starMiddle.SetActive(true);
+        }
         Cursor.visible = true;
+        Debug.Log(GameManager.Instance.score);
 
     }
 
@@ -281,6 +311,16 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         minimumFoodPopUp.SetActive(false);
+    }
+
+    IEnumerator MiniLossPop()
+    {
+        altDetected.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        altDetected.SetActive(false);
+
     }
 
     public void StartPopUps(int coin)
@@ -347,6 +387,8 @@ public class UIController : MonoBehaviour
 
         currentMiniGame.SetActive(false);
         gameUI.SetActive(true);
+
+        StartCoroutine(MiniLossPop());
     }
 
     public void MiniGameWin()
