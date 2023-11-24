@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource playerSource;
     public AudioSource ambiantSource;
 
+    public AudioSource buttonSource;
+
     public bool isWalking = false;
     private void Start()
     {
@@ -43,6 +45,11 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = ambiantClip;
         ambiantSource.clip = clip;
         ambiantSource.Play();
-    }   
+    }  
+    
+    public void ButtonClip()
+    {
+        buttonSource.Play();
+    }
 
 }

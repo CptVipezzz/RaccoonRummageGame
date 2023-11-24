@@ -9,9 +9,9 @@ using UnityEngine;
 
 public class PlayerSound : MonoBehaviour
 {
-    public AudioClip[] FootSteps;
+    public AudioSource[] FootSteps;
 
-    public AudioSource source;
+    //public AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +21,7 @@ public class PlayerSound : MonoBehaviour
     void PlayFootStepRacc()
     {
         //Loads random audio clip form array to play.
-        AudioClip clip = FootSteps[(int)Random.Range(0, FootSteps.Length)];
-        source.clip = clip;
-        source.Play();
+         FootSteps[(int)Random.Range(0, FootSteps.Length)].Play();
+       
     }
 }
