@@ -45,6 +45,7 @@ public class UIController : MonoBehaviour
     public GameObject playerCamera;
     ThirdPersonControl controller;
     CinemachineFreeLook freeLook;
+    public SoundManager soundManager;
 
     public GameObject[] miniGames;
 
@@ -152,7 +153,7 @@ public class UIController : MonoBehaviour
         //Displays the [Game Over] screen if the stealth value hits 0.
         if (GameManager.Instance.stealth <= 0)
         {
-            Debug.Log("Player Detected");
+            //Debug.Log("Player Detected");
             GameLoss();
         }
 
@@ -231,6 +232,7 @@ public class UIController : MonoBehaviour
     public void GameWon()
     {
         //Displays only the game won UI elements.
+        soundManager.PlayMenuClip();
         Time.timeScale = 0;
         isPaused = true;
         winScreenUI.SetActive(true); 
@@ -258,7 +260,7 @@ public class UIController : MonoBehaviour
             starMiddleWin.SetActive(true);
         }
         Cursor.visible = true;
-        //SoundManager.Instance.PlayMenuClip();
+        //soundManager.PlayMenuClip();
         Debug.Log(GameManager.Instance.score);
 
     }
@@ -271,6 +273,8 @@ public class UIController : MonoBehaviour
         minimumFoodPopUp.SetActive(false);
         gameUI.SetActive(false);
         isHidden = true;
+        soundManager.PlayMenuClip();
+        SoftPause();
         Time.timeScale = 0;
         isPaused = true;
         
@@ -296,7 +300,7 @@ public class UIController : MonoBehaviour
             starMiddleLoss.SetActive(true);
         }
 
-        //SoundManager.Instance.PlayMenuClip();
+        //soundManager.PlayMenuClip();
         Cursor.visible = true;
     }
 

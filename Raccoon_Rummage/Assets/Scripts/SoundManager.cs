@@ -1,64 +1,48 @@
+/* Raccoon Rummage
+   Game UI controller
+   Written by Jack Limerick
+   34190313 */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance;
+    [SerializeField] public AudioClip[] PickUpAudio;
+    [SerializeField] private AudioClip menuClip, ambiantClip;
 
-    [SerializeField] private AudioSource[] walkingSource;
-    [SerializeField] private AudioSource[] PickUpAudio;
-    [SerializeField] private AudioSource menuSource, ambiantSource;
+    public AudioSource playerSource;
+    public AudioSource ambiantSource;
 
     public bool isWalking = false;
-
-    //int rdm = 0;
-    public static SoundManager instance 
+    private void Start()
     {
-        get
-        {
-            if (instance == null) Debug.Log("SoundManager is NULL");
-
-            return instance;
-        }
+        //ambiantSource.clip = ambiantClip;
+        //ambiantSource.Play();
+        MenuClipOff();
     }
-    private void Update()
-    {
-        PlayWalkingClip();
-    }
-   
 
     public void PlayPickUpClip()
     {
-        int rdm = Random.Range(0, PickUpAudio.Length);
-        PickUpAudio[rdm].Play();
+        AudioClip clip = PickUpAudio[(int)Random.Range(0, PickUpAudio.Length)];
+        playerSource.clip = clip;
+        playerSource.Play();
     }
 
     public void PlayMenuClip()
     {
-        menuSource.Play();
-        ambiantSource.Pause();
+        AudioClip clip = menuClip;
+        ambiantSource.clip = clip;
+        ambiantSource.Play();
     }
 
     public void MenuClipOff()
     {
-        menuSource.Pause();
-    }
-
-    void PlayWalkingClip()
-    {
-        //int rdm = Random.Range(0, PickUpAudio.Length);
-
-        if (isWalking == true)
-        {
-            
-            walkingSource[0].Play();
-        }
-        else
-        {
-            walkingSource[0].Pause();  
-        }
-    }
-   
+        playerSource.Pause();
+        AudioClip clip = ambiantClip;
+        ambiantSource.clip = clip;
+        ambiantSource.Play();
+    }   
 
 }
